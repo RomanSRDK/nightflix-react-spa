@@ -1,0 +1,44 @@
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 15px;
+}
+
+.icon {
+  margin-right: 8px;
+  vertical-align: text-top;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.4s ease, left 0.4s ease, background-color 0.3s ease;
+}
+
+.link:hover {
+  color: red;
+}
+
+.link:hover::after {
+  width: 100%;
+  left: 0;
+  background-color: red;
+}

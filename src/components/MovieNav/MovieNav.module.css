@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  gap: 20px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #ccc;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.isActive {
+  text-decoration: none;
+  color: #e52b50;
+  font-weight: 600;
+  border-bottom: 2px solid #e52b50;
+}
