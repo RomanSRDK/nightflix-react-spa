@@ -1,28 +1,21 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import axios from "axios";
 import MovieView from "../components/MovieView/MovieView";
 import MovieNav from "../components/MovieNav/MovieNav";
+import { useDispatch, useSelector } from "react-redux";
+import { getMovieById } from "../redux/trendingMovies/operations";
+import { movieInfo } from "../redux/trendingMovies/selectors";
 
 function MovieDetailsPage() {
+  const info = useSelector(movieInfo);
   const location = useLocation();
   const backLinkRef = useRef(location.state || "/movies");
-
-  const [movieInfo, setMovieInfo] = useState(null);
   const { movieId } = useParams();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-
-    const options = {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTQzM2E0M2MwOGVlZGNlM2JiZmNiYjEwZTk2NzFhOSIsIm5iZiI6MTc0OTg5NjUwNi4zOTIsInN1YiI6IjY4NGQ0ZDNhMWQ2YzRhNDc0ZWJiNGE3OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QdPDsg81ywDhazmprFyPiSM7lF9J4OAq_E-SSVhqDTw",
-      },
-    };
-
-    axios.get(url, options).then(({ data }) => setMovieInfo(data));
-  }, [movieId]);
+    dispatch(getMovieById(movieId));
+  }, [dispatch, movieId]);
 
   return (
     <>
@@ -44,7 +37,7 @@ function MovieDetailsPage() {
         Go Back
       </Link>
 
-      {movieInfo && <MovieView movieInfo={movieInfo} />}
+      {info && <MovieView movieInfo={info} />}
       <MovieNav />
       <Outlet />
     </>

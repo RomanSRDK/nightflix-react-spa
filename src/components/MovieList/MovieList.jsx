@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { BiCameraMovie } from "react-icons/bi";
 import styles from "./MovieList.module.css";
 
 function MovieList({ movies }) {
@@ -9,7 +8,6 @@ function MovieList({ movies }) {
     <ul className={styles.list}>
       {movies.map((movie) => (
         <li key={movie.id} className={styles.item}>
-          <BiCameraMovie className={styles.icon} />
           <Link
             to={`/movies/${movie.id}`}
             className={styles.link}

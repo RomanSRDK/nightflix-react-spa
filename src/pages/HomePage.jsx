@@ -1,33 +1,25 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MovieList from "../components/MovieList/MovieList";
+import { getTrendingMovies } from "../redux/trendingMovies/operations";
+import { isLoading, trendingMovies } from "../redux/trendingMovies/selectors";
 
 function HomePage() {
-  const [trendingMovies, setTrendingMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const timeWindow = "week";
+
+  const dispatch = useDispatch();
+  const movies = useSelector(trendingMovies);
+  const loading = useSelector(isLoading);
 
   useEffect(() => {
-    const timeWindow = "week";
-    setIsLoading(true);
-    const url = `https://api.themoviedb.org/3/trending/movie/${timeWindow}?language=en-US`;
-    const options = {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTQzM2E0M2MwOGVlZGNlM2JiZmNiYjEwZTk2NzFhOSIsIm5iZiI6MTc0OTg5NjUwNi4zOTIsInN1YiI6IjY4NGQ0ZDNhMWQ2YzRhNDc0ZWJiNGE3OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QdPDsg81ywDhazmprFyPiSM7lF9J4OAq_E-SSVhqDTw",
-      },
-    };
-
-    axios
-      .get(url, options)
-      .then(({ data }) => setTrendingMovies(data.results))
-      .finally(() => setIsLoading(false));
-  }, []);
+    dispatch(getTrendingMovies(timeWindow));
+  }, [dispatch]);
 
   return (
     <>
-      {isLoading && <strong>Loading...</strong>}
+      {loading && <strong>Loading...</strong>}
       <h1>Trending today</h1>
-      {trendingMovies.length > 0 && <MovieList movies={trendingMovies} />}
+      {movies.length > 0 && <MovieList movies={movies} />}
     </>
   );
 }

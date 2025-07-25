@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
-import "./App.css";
 import { lazy, Suspense } from "react";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
