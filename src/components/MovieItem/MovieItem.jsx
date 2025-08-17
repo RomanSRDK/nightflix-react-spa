@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
-const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
 import { CiStar } from "react-icons/ci";
 import styles from "./MovieItem.module.css";
+
+const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
 
 function MovieItem({ movie }) {
   const location = useLocation();

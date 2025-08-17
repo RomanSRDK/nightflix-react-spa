@@ -1,15 +1,15 @@
-import { useEffect, useRef } from "react";
-import { Link, Outlet, useLocation, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Outlet, useParams } from "react-router-dom";
 import MovieView from "../components/MovieView/MovieView";
 import MovieNav from "../components/MovieNav/MovieNav";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieById } from "../redux/movies/operations";
 import { movieInfo } from "../redux/movies/selectors";
+import NavigateBackButton from "../components/NavigateBackButton/NavigateBackButton";
 
 function MovieDetailsPage() {
   const info = useSelector(movieInfo);
-  const location = useLocation();
-  const backLinkRef = useRef(location.state || "/movies");
+
   const { movieId } = useParams();
   const dispatch = useDispatch();
 
@@ -19,27 +19,14 @@ function MovieDetailsPage() {
 
   return (
     <>
-      <Link
-        to={backLinkRef.current}
-        style={{
-          display: "inline-block",
-          padding: "8px 16px",
-          margin: "24px 0",
-          backgroundColor: "#000",
-          color: "#fff",
-          textDecoration: "none",
-          borderRadius: "6px",
-          fontWeight: "500",
-          boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
-          transition: "background-color 0.3s ease",
-        }}
-      >
-        Go Back
-      </Link>
-
-      {info && <MovieView movieInfo={info} />}
-      <MovieNav />
-      <Outlet />
+      {/* <NavigateBackButton /> */}
+      {info && (
+        <>
+          <MovieView movieInfo={info} />
+          <MovieNav />
+          <Outlet />
+        </>
+      )}
     </>
   );
 }
