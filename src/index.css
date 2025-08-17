@@ -1,26 +1,43 @@
-html {
-  height: 100%;
-  scroll-behavior: smooth;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
+.container {
+  width: 1440px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
 body {
   font-family: "Inter Variable", sans-serif;
   font-size: 14px;
-  background-color: #ffffff;
+  color: #1a1a1a;
   line-height: 1.5;
-  margin: 0;
   padding: 0;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 200, 150, 0.25),
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(150, 200, 255, 0.25),
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(200, 255, 200, 0.2),
+      transparent 70%
+    ),
+    #f5f7fa; /* премиальный светло-серый с лёгким голубым подтоном */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
 }
 
 /* Reset */
@@ -34,7 +51,7 @@ a {
 }
 
 button {
-  font: inherit;
+  font-family: inherit;
   cursor: pointer;
   background: none;
   border: none;
@@ -43,6 +60,4 @@ button {
 
 img {
   display: block;
-  width: 100%;
-  height: auto;
 }

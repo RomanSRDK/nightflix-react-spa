@@ -14,7 +14,7 @@ function Header() {
           <ul className={css.navList}>
             <li className={css.navItem}>
               <NavLink to="/" className={getActiveLinkClass}>
-                Trending movies
+                Movies
               </NavLink>
             </li>
             <li className={css.navItem}>

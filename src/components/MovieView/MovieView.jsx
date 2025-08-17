@@ -1,5 +1,5 @@
 import styles from "./MovieView.module.css";
-const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
+const BASE_URL_IMG = "https://image.tmdb.org/t/p/original";
 
 function MovieView({ movieInfo }) {
   return (
@@ -14,6 +14,11 @@ function MovieView({ movieInfo }) {
         <h1 className={styles.title}>{movieInfo.title}</h1>
 
         <ul className={styles.infoList}>
+          <li className={styles.bgimage}>
+            {/* <img
+              src={`https://image.tmdb.org/t/p/original${movieInfo.backdrop_path}`}
+            /> */}
+          </li>
           <li>
             <strong>Release Date:</strong> {movieInfo.release_date}
           </li>
@@ -28,7 +33,8 @@ function MovieView({ movieInfo }) {
             <strong>Rating:</strong> {Number(movieInfo.vote_average).toFixed(1)}
           </li>
           <li>
-            <strong>Duration:</strong> {movieInfo.runtime} min.
+            <strong>Duration:</strong> {Math.floor(movieInfo.runtime / 60)} h.{" "}
+            {movieInfo.runtime % 60} mins.
           </li>
           <li>
             <strong>Overview:</strong> {movieInfo.overview}

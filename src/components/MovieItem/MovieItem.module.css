@@ -1,0 +1,77 @@
+.movieItem {
+  display: block;
+}
+
+.posterContainer {
+  position: relative;
+  overflow: hidden; /* чтобы при увеличении постер не выходил за рамки */
+}
+
+.poster {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+}
+
+.item:hover .poster {
+  transform: scale(1.03);
+}
+
+.rating {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #ffad49;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15); /* светлая обводка */
+
+  /* position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #ffad49;
+  padding: 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  backdrop-filter: blur(2px); */
+}
+
+.starIcon {
+  font-size: 18px;
+}
+
+.posterTitle {
+  white-space: nowrap; /*запрещает перенос текста на новую строку */
+  overflow: hidden; /*скрывает контент, который не помещается*/
+  text-overflow: ellipsis; /*добавляет троеточие (...) в конце*/
+  margin-top: 16px;
+  margin-bottom: 4px;
+  padding: 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: color 0.25s ease;
+}
+
+.movieItem:hover .posterTitle {
+  color: #1d78d2; /* можно заменить на твой акцентный цвет */
+}
+
+.posterYear {
+  padding-left: 8px;
+  margin-bottom: 16px;
+  color: #b0b6c4;
+}

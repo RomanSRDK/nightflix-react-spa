@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getMovieById, getTrendingMovies } from "./operations";
 
-export const trendingMoviesSlice = createSlice({
+export const moviesSlice = createSlice({
   name: "movies",
   initialState: {
     items: [],
     movieInfo: null,
     isLoading: false,
+    currentPage: 0,
+    totalPages: 0,
+  },
+  reducers: {
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -16,6 +23,8 @@ export const trendingMoviesSlice = createSlice({
       .addCase(getTrendingMovies.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items = action.payload.results;
+        // state.currentPage = action.payload.page;
+        state.totalPages = action.payload.total_pages;
       })
       .addCase(getMovieById.pending, (state) => {
         state.isLoading = true;
@@ -28,4 +37,5 @@ export const trendingMoviesSlice = createSlice({
   },
 });
 
-export default trendingMoviesSlice.reducer;
+export const { setCurrentPage } = moviesSlice.actions;
+export default moviesSlice.reducer;

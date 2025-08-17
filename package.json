@@ -1,5 +1,5 @@
 {
-  "name": "goit-react-hw-05",
+  "name": "nightflix",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@fontsource-variable/inter": "^5.2.6",
+    "@mui/material": "^7.3.1",
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",

@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import trendingMoviesReducer from "./trendingMovies/slice";
+import moviesReducer from "./movies/slice";
 
 export const store = configureStore({
   reducer: {
-    trendingMovies: trendingMoviesReducer,
+    movies: moviesReducer,
   },
 });

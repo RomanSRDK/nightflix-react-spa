@@ -3,8 +3,8 @@ import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import MovieView from "../components/MovieView/MovieView";
 import MovieNav from "../components/MovieNav/MovieNav";
 import { useDispatch, useSelector } from "react-redux";
-import { getMovieById } from "../redux/trendingMovies/operations";
-import { movieInfo } from "../redux/trendingMovies/selectors";
+import { getMovieById } from "../redux/movies/operations";
+import { movieInfo } from "../redux/movies/selectors";
 
 function MovieDetailsPage() {
   const info = useSelector(movieInfo);
