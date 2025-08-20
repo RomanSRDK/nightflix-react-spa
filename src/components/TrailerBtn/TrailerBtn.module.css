@@ -1,0 +1,43 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+}
+
+.closeButton {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 0;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+}
+
+.closeButton:hover {
+  color: #f00909;
+}
+
+.closeButton:focus {
+  outline: 2px solid #007bff;
+}
+
+.text {
+  color: #fff;
+  text-align: center;
+}

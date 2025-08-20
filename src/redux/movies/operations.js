@@ -34,3 +34,15 @@ export const getMovieById = createAsyncThunk(
     }
   }
 );
+
+export const getTrailerMovie = createAsyncThunk(
+  "movies/getTrailerMovie",
+  async (movieId, ThunkAPI) => {
+    try {
+      const { data } = await axios.get(`/movie/${movieId}/videos`);
+      return data.results.filter(({ type }) => type === "Trailer");
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error);
+    }
+  }
+);

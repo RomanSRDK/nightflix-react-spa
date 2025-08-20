@@ -23,8 +23,8 @@ function MovieDetailsPage() {
       {info && (
         <>
           <MovieView movieInfo={info} />
-          <MovieNav />
-          <Outlet />
+          {/* <MovieNav /> */}
+          {/* <Outlet /> */}
         </>
       )}
     </>

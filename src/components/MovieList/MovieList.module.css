@@ -13,22 +13,10 @@
 }
 
 .item {
-  width: 282px;
-  padding: 8px 8px 0 8px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(20px) saturate(200%);
-  -webkit-backdrop-filter: blur(20px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-
-  /* новая тень в два слоя */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06),
-    /* мягкая ближняя */ 0 12px 24px rgba(0, 0, 0, 0.08); /* лёгкая дальняя */
-
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08), 0 16px 32px rgba(0, 0, 0, 0.12);
+  /* padding: 8px 8px 0 8px; */
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 12px 24px rgba(0, 0, 0, 0.08);
 }

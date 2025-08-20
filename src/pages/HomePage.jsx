@@ -1,16 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Link, useSearchParams } from "react-router-dom";
-
-import { Container, Pagination, PaginationItem } from "@mui/material";
+import { useSearchParams } from "react-router-dom";
 
 import MovieList from "../components/MovieList/MovieList";
 import Loader from "../components/Loader/Loader";
 
 import { getTrendingMovies } from "../redux/movies/operations";
-import { totalPages, trendingMovies } from "../redux/movies/selectors";
+import { trendingMovies } from "../redux/movies/selectors";
 import { setCurrentPage } from "../redux/movies/slice";
+import PaginationMui from "../components/PaginationMui/PaginationMui";
 
 function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,7 +17,6 @@ function HomePage() {
 
   const dispatch = useDispatch();
   const movies = useSelector(trendingMovies);
-  const pageQty = useSelector(totalPages);
 
   useEffect(() => {
     dispatch(setCurrentPage(currentPage));
@@ -34,23 +32,10 @@ function HomePage() {
       {movies.length > 0 ? (
         <>
           <MovieList movies={movies} />
-          <Container sx={{ my: 5, display: "flex", justifyContent: "center" }}>
-            <Pagination
-              count={pageQty}
-              page={currentPage}
-              onChange={handlePageChange}
-              color="primary"
-              variant="outlined"
-              shape="rounded"
-              renderItem={(item) => (
-                <PaginationItem
-                  component={Link}
-                  to={`/?page=${item.page}`}
-                  {...item}
-                />
-              )}
-            />
-          </Container>
+          <PaginationMui
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+          />
         </>
       ) : (
         <Loader />

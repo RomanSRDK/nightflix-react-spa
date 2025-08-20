@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMovieById, getTrendingMovies } from "./operations";
+import { getMovieById, getTrailerMovie, getTrendingMovies } from "./operations";
 
 export const moviesSlice = createSlice({
   name: "movies",
   initialState: {
     items: [],
     movieInfo: null,
+    trailer: [],
     isLoading: false,
     currentPage: 0,
     totalPages: 0,
@@ -33,6 +34,13 @@ export const moviesSlice = createSlice({
       .addCase(getMovieById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.movieInfo = action.payload;
+      })
+      .addCase(getTrailerMovie.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getTrailerMovie.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.trailer = action.payload;
       });
   },
 });
