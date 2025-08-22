@@ -1,3 +1,21 @@
+.watchTrailer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ffad49;
+  backdrop-filter: blur(10px);
+  color: #ebeef5;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.watchTrailer:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 .backdrop {
   position: fixed;
   top: 0;

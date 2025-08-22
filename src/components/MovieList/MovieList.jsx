@@ -6,7 +6,6 @@ function MovieList({ movies }) {
     <main>
       <section>
         <div className="container">
-          <h1 className={styles.title}>Trending movies</h1>
           <ul className={styles.list}>
             {movies.map((movie) => (
               <li key={movie.id} className={styles.item}>

@@ -8,17 +8,20 @@ function MovieNav() {
   };
 
   return (
-    <>
-      <ul className={css.list}>
-        <NavLink to="cast" className={getActiveLinkClass}>
-          Cast
-        </NavLink>
-
-        <NavLink to="reviews" className={getActiveLinkClass}>
-          Reviews
-        </NavLink>
+    <div className={css.navContainer}>
+      <ul className={css.siteNav}>
+        <li>
+          <NavLink to="cast" className={getActiveLinkClass}>
+            Cast
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="reviews" className={getActiveLinkClass}>
+            Reviews
+          </NavLink>
+        </li>
       </ul>
-    </>
+    </div>
   );
 }
 

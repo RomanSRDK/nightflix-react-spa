@@ -1,35 +1,54 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import styles from "./MovieReviews.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { reviewsInfo } from "../../redux/movies/selectors";
+import { getReviews } from "../../redux/movies/operations";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
 function MovieReviews() {
-  const [reviewsInfo, setReviewsInfo] = useState([]);
+  const dispatch = useDispatch();
+  const reviews = useSelector(reviewsInfo);
 
   const { movieId } = useParams();
+  const [reviewsPerPage, setReviewsPerPage] = useState(2);
+
+  const handleLoadMore = () => {
+    setReviewsPerPage((prev) => prev + 2);
+  };
+
+  const visibleReviews = reviews.slice(0, reviewsPerPage);
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US`;
-    const options = {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTQzM2E0M2MwOGVlZGNlM2JiZmNiYjEwZTk2NzFhOSIsIm5iZiI6MTc0OTg5NjUwNi4zOTIsInN1YiI6IjY4NGQ0ZDNhMWQ2YzRhNDc0ZWJiNGE3OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QdPDsg81ywDhazmprFyPiSM7lF9J4OAq_E-SSVhqDTw",
-      },
-    };
+    dispatch(getReviews(movieId));
+  }, [dispatch, movieId]);
 
-    axios.get(url, options).then(({ data }) => setReviewsInfo(data.results));
-  }, [movieId]);
+  const getInitial = (name) => {
+    return name ? name.charAt(0).toUpperCase() : "";
+  };
 
   return (
     <>
+      <span className={`${styles.numberOfReviews} ${styles.withIcon}`}>
+        {reviews.length} Reviews
+      </span>
       <ul className={styles.list}>
-        {reviewsInfo.map((review) => (
+        {visibleReviews.map((review) => (
           <li key={review.id} className={styles.item}>
-            <p className={styles.author}>{review.author}</p>
+            <div className={styles.avatarContainer}>
+              <span className={styles.reviewAvatar}>
+                {getInitial(review.author)}
+              </span>
+              <p className={styles.author}>{review.author}</p>
+            </div>
+
             <p className={styles.content}>{review.content}</p>
           </li>
         ))}
       </ul>
+      {reviewsPerPage < reviews.length && (
+        <LoadMoreBtn onClick={handleLoadMore} />
+      )}
     </>
   );
 }

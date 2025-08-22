@@ -14,12 +14,12 @@ function Header() {
           <ul className={css.navList}>
             <li className={css.navItem}>
               <NavLink to="/" className={getActiveLinkClass}>
-                Movies
+                Home
               </NavLink>
             </li>
             <li className={css.navItem}>
-              <NavLink to="/movies" className={getActiveLinkClass}>
-                Search
+              <NavLink to="/search" className={getActiveLinkClass}>
+                Search Movies
               </NavLink>
             </li>
           </ul>

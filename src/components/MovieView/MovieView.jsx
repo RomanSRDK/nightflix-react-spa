@@ -1,8 +1,8 @@
 import { CiStar } from "react-icons/ci";
 import { LuClock4 } from "react-icons/lu";
 import { useParams } from "react-router-dom";
-import styles from "./MovieView.module.css";
 import TrailerBtn from "../TrailerBtn/TrailerBtn";
+import styles from "./MovieView.module.css";
 
 function MovieView({ movieInfo }) {
   const BASE_URL_IMG = "https://image.tmdb.org/t/p/original";
@@ -11,7 +11,7 @@ function MovieView({ movieInfo }) {
   const { movieId } = useParams();
 
   return (
-    <div className="container">
+    <div>
       {/* Fixed background */}
       <div className={styles.backgroundContainer}>
         {movieInfo.backdrop_path && (
@@ -23,6 +23,7 @@ function MovieView({ movieInfo }) {
         )}
         <div className={styles.overlay}></div>
       </div>
+
       {/* Content */}
       <div className={styles.container}>
         <img
@@ -32,11 +33,11 @@ function MovieView({ movieInfo }) {
         />
 
         <ul className={styles.infoList}>
-          <li>{year[0]}</li>
+          <li className={styles.year}>{year[0]}</li>
           <li>
             <h1 className={styles.title}>{movieInfo.title}</h1>
           </li>
-          <li>
+          <li className={styles.tagLine}>
             {movieInfo.tagline.length > 0 ? (
               <>
                 {"\u00AB"}
@@ -49,17 +50,16 @@ function MovieView({ movieInfo }) {
               ""
             )}
           </li>
-
-          <li>
+          <li className={styles.genres}>
             {movieInfo.genres?.map(({ id, name }) => (
-              <div key={id} className={styles.countryFlag}>
+              <div key={id} className={styles.genre}>
                 <span>{name}</span>
               </div>
             ))}
           </li>
-
           <li>{movieInfo.overview}</li>
-          <div className={styles.description}>
+
+          <div className={styles.stats}>
             <li>
               <div className={styles.rating}>
                 <CiStar className={styles.starIcon} />
@@ -84,6 +84,7 @@ function MovieView({ movieInfo }) {
               )}
             </li>
           </div>
+
           <li>
             <TrailerBtn movieId={movieId} />
           </li>

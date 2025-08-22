@@ -1,34 +1,85 @@
+.castMembers.withIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ebeef5;
+  width: fit-content;
+}
+
+.castMembers.withIcon::before {
+  content: "🎭";
+  font-size: 1.1em;
+}
+
 .list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 24px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  row-gap: 24px;
+  column-gap: 20px;
+  margin-bottom: 60px;
 }
 
 .item {
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  text-align: center;
-  padding: 12px;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .image {
   width: 100%;
-  height: 220px;
+  height: auto;
+  aspect-ratio: 2/3;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 8px;
+  display: block;
 }
 
-.text {
-  font-size: 14px;
-  line-height: 1.4;
-  color: #ccc;
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 2/3;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+}
+
+.imagePlaceholder.initials {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.actorName {
+  color: #ebeef5;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 12px 12px 6px 12px;
+  line-height: 1.3;
+}
+
+.characterName {
+  color: #90a4ae;
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin: 0 12px 12px 12px;
+  line-height: 1.2;
+  font-style: italic;
 }

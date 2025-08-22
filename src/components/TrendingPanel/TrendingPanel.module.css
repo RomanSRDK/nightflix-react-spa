@@ -1,0 +1,12 @@
+.titleToggle {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 100px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #90a4ae;
+  font-size: 24px;
+  font-weight: 600;
+}

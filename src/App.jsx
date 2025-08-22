@@ -1,30 +1,49 @@
-import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import MovieCast from "./components/MovieCast/MovieCast";
 import MovieReviews from "./components/MovieReviews/MovieReviews";
-import { lazy, Suspense } from "react";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
-const MoviesPage = lazy(() => import("./pages/MoviesPage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
 const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
-function App() {
+// Layout с Header
+function LayoutWithHeader() {
   return (
     <>
-      {/* <Header /> */}
-      <Suspense fallback={null}>
-        <Routes>
+      <Header />
+      <Outlet />
+    </>
+  );
+}
+
+// Layout без Header
+function LayoutWithoutHeader() {
+  return <Outlet />;
+}
+
+function App() {
+  return (
+    <Suspense fallback={null}>
+      <Routes>
+        {/* Маршруты с Header */}
+        <Route element={<LayoutWithHeader />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+
+        {/* Маршруты без Header */}
+        <Route element={<LayoutWithoutHeader />}>
           <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-    </>
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 

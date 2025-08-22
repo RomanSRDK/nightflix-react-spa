@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMovieById, getTrailerMovie, getTrendingMovies } from "./operations";
+import {
+  getActorsCast,
+  getMovieById,
+  getMoviesByName,
+  getReviews,
+  getTrailerMovie,
+  getTrendingMovies,
+} from "./operations";
 
 export const moviesSlice = createSlice({
   name: "movies",
@@ -7,6 +14,9 @@ export const moviesSlice = createSlice({
     items: [],
     movieInfo: null,
     trailer: [],
+    foundMovies: [],
+    castInfo: [],
+    reviewsInfo: [],
     isLoading: false,
     currentPage: 0,
     totalPages: 0,
@@ -41,6 +51,15 @@ export const moviesSlice = createSlice({
       .addCase(getTrailerMovie.fulfilled, (state, action) => {
         state.isLoading = false;
         state.trailer = action.payload;
+      })
+      .addCase(getMoviesByName.fulfilled, (state, action) => {
+        state.foundMovies = action.payload;
+      })
+      .addCase(getActorsCast.fulfilled, (state, action) => {
+        state.castInfo = action.payload;
+      })
+      .addCase(getReviews.fulfilled, (state, action) => {
+        state.reviewsInfo = action.payload;
       });
   },
 });

@@ -7,7 +7,7 @@ const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
 
 function MovieItem({ movie }) {
   const location = useLocation();
-  const year = movie.release_date.split("-");
+  // const year = movie.release_date?.split("-");
 
   return (
     <>
@@ -30,11 +30,12 @@ function MovieItem({ movie }) {
         </div>
       </Link>
 
-      <p className={styles.posterYear}>{year[0]}</p>
+      <p className={styles.posterYear}> {movie.release_date}</p>
+      {/* {year[0]} */}
 
       <div className={styles.rating}>
         <CiStar className={styles.icon} />
-        <span>{movie.vote_average.toFixed(1)} TMDB</span>
+        {/* <span>{movie.vote_average.toFixed(1)} TMDB</span> */}
       </div>
     </>
   );

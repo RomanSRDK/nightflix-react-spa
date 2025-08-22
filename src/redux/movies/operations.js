@@ -9,10 +9,10 @@ axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
 
 export const getTrendingMovies = createAsyncThunk(
   "movies/getTranding",
-  async ({ timeWindow, page }, ThunkAPI) => {
+  async ({ timeWindow, currentPage }, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/trending/movie/${timeWindow}?page=${page}`
+        `/trending/movie/${timeWindow}?page=${currentPage}`
       );
       console.log(data);
       return data;
@@ -41,6 +41,52 @@ export const getTrailerMovie = createAsyncThunk(
     try {
       const { data } = await axios.get(`/movie/${movieId}/videos`);
       return data.results.filter(({ type }) => type === "Trailer");
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const getMoviesByName = createAsyncThunk(
+  "movies/getMoviesByName",
+  async (debouncedQuery, ThunkAPI) => {
+    try {
+      const { data } = await axios.get(
+        `/search/movie?include_adult=false&language=en-US&page=1&query=${debouncedQuery}`
+      );
+      console.log(data.results);
+
+      return data.results;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const getActorsCast = createAsyncThunk(
+  "movies/getActorsCast",
+  async (movieId, ThunkAPI) => {
+    try {
+      const { data } = await axios.get(
+        `/movie/${movieId}/credits?language=en-US`
+      );
+      console.log(data.cast);
+      return data.cast;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const getReviews = createAsyncThunk(
+  "movies/getReviews",
+  async (movieId, ThunkAPI) => {
+    try {
+      const { data } = await axios.get(
+        `/movie/${movieId}/reviews?language=en-US`
+      );
+      console.log(data.results);
+      return data.results;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }

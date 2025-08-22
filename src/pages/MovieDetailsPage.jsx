@@ -1,33 +1,35 @@
 import { useEffect } from "react";
-import { Outlet, useParams } from "react-router-dom";
-import MovieView from "../components/MovieView/MovieView";
-import MovieNav from "../components/MovieNav/MovieNav";
 import { useDispatch, useSelector } from "react-redux";
+import { Outlet, useParams } from "react-router-dom";
 import { getMovieById } from "../redux/movies/operations";
 import { movieInfo } from "../redux/movies/selectors";
+import MovieView from "../components/MovieView/MovieView";
+import MovieNav from "../components/MovieNav/MovieNav";
 import NavigateBackButton from "../components/NavigateBackButton/NavigateBackButton";
+import Loader from "../components/Loader/Loader";
 
 function MovieDetailsPage() {
-  const info = useSelector(movieInfo);
-
-  const { movieId } = useParams();
   const dispatch = useDispatch();
+  const { movieId } = useParams();
+  const info = useSelector(movieInfo);
 
   useEffect(() => {
     dispatch(getMovieById(movieId));
   }, [dispatch, movieId]);
 
   return (
-    <>
-      {/* <NavigateBackButton /> */}
-      {info && (
-        <>
+    <div className="container">
+      {info ? (
+        <div>
+          <NavigateBackButton />
           <MovieView movieInfo={info} />
-          {/* <MovieNav /> */}
-          {/* <Outlet /> */}
-        </>
+          <MovieNav />
+          <Outlet />
+        </div>
+      ) : (
+        <Loader />
       )}
-    </>
+    </div>
   );
 }
 

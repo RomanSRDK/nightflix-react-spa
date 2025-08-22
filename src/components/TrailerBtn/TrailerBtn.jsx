@@ -2,6 +2,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { CiPlay1 } from "react-icons/ci";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { trailerMovie } from "../../redux/movies/selectors";
@@ -53,7 +55,8 @@ function TrailerBtn({ movieId }) {
 
   return (
     <div>
-      <button onClick={handleClick} style={{ color: "white" }}>
+      <button onClick={handleClick} className={styles.watchTrailer}>
+        <CiPlay1 />
         Watch trailer
       </button>
 

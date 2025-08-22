@@ -1,12 +1,25 @@
-.goBackLink {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 24px 0;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 500;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease;
+.backButton {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  color: #ebeef5;
+  width: 300px;
+  /* position: fixed;
+  top: 20px;
+  left: 24px; */
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
+  padding: 10px 20px;
+  border-radius: 25px;
+
+  gap: 8px;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.backButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(-3px);
 }
