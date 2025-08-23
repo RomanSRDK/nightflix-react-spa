@@ -9,10 +9,10 @@ axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
 
 export const getTrendingMovies = createAsyncThunk(
   "movies/getTranding",
-  async ({ timeWindow, currentPage }, ThunkAPI) => {
+  async ({ timeWindow, page }, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/trending/movie/${timeWindow}?page=${currentPage}`
+        `/trending/movie/${timeWindow}?page=${page}`
       );
       console.log(data);
       return data;
@@ -49,14 +49,13 @@ export const getTrailerMovie = createAsyncThunk(
 
 export const getMoviesByName = createAsyncThunk(
   "movies/getMoviesByName",
-  async (debouncedQuery, ThunkAPI) => {
+  async ({ debouncedQuery, page }, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/search/movie?include_adult=false&language=en-US&page=1&query=${debouncedQuery}`
+        `/search/movie?query=${debouncedQuery}&page=${page}`
       );
-      console.log(data.results);
-
-      return data.results;
+      console.log(data);
+      return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }

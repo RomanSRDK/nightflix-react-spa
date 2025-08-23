@@ -18,13 +18,7 @@ export const moviesSlice = createSlice({
     castInfo: [],
     reviewsInfo: [],
     isLoading: false,
-    currentPage: 0,
     totalPages: 0,
-  },
-  reducers: {
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -34,7 +28,6 @@ export const moviesSlice = createSlice({
       .addCase(getTrendingMovies.fulfilled, (state, action) => {
         state.isLoading = false;
         state.items = action.payload.results;
-        // state.currentPage = action.payload.page;
         state.totalPages = action.payload.total_pages;
       })
       .addCase(getMovieById.pending, (state) => {
@@ -53,7 +46,8 @@ export const moviesSlice = createSlice({
         state.trailer = action.payload;
       })
       .addCase(getMoviesByName.fulfilled, (state, action) => {
-        state.foundMovies = action.payload;
+        state.foundMovies = action.payload.results;
+        state.totalPages = action.payload.total_pages;
       })
       .addCase(getActorsCast.fulfilled, (state, action) => {
         state.castInfo = action.payload;

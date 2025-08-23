@@ -1,10 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { totalPages } from "../../redux/movies/selectors";
 import { Container, Pagination, PaginationItem } from "@mui/material";
 
-function PaginationMui({ currentPage, handlePageChange }) {
+function PaginationMui() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentPage = parseInt(searchParams.get("page")) || 1;
+  const searchQuery = searchParams.get("name");
   const pageQty = useSelector(totalPages);
+
+  const handlePageChange = (_, newPage) => {
+    const nextSearchParams = new URLSearchParams(searchParams);
+    nextSearchParams.set("page", newPage);
+
+    if (!searchQuery) {
+      nextSearchParams.delete("name");
+    }
+
+    setSearchParams(nextSearchParams);
+
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Container sx={{ my: 5, display: "flex", justifyContent: "center" }}>
       <Pagination
@@ -20,9 +37,13 @@ function PaginationMui({ currentPage, handlePageChange }) {
             borderRadius: "8px",
           },
           "& .MuiPaginationItem-root.Mui-selected": {
-            backgroundColor: "#ffb74d", // тёплый акцент (оранжевый в духе рейтингов)
+            backgroundColor: "#ffb74d",
             color: "#1e1e1e", // тёмный текст для контраста
             fontWeight: "bold",
+          },
+          // ✅ Отключаем hover для выбранного элемента
+          "& .MuiPaginationItem-root.Mui-selected:hover": {
+            backgroundColor: "#ffb74d",
           },
           "& .MuiPaginationItem-root:hover": {
             backgroundColor: "rgba(255, 183, 77, 0.15)", // мягкий полупрозрачный акцент
@@ -31,13 +52,19 @@ function PaginationMui({ currentPage, handlePageChange }) {
             color: "#9ea7b8", // серый для троеточия
           },
         }}
-        renderItem={(item) => (
-          <PaginationItem
-            component={Link}
-            to={`/?page=${item.page}`}
-            {...item}
-          />
-        )}
+        renderItem={(item) => {
+          const params = new URLSearchParams();
+          if (searchQuery) params.set("name", searchQuery);
+          params.set("page", item.page);
+
+          return (
+            <PaginationItem
+              component={Link}
+              to={`?${params.toString()}`}
+              {...item}
+            />
+          );
+        }}
       />
     </Container>
   );

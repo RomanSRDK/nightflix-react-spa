@@ -1,0 +1,106 @@
+.header {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-bottom: 32px;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.navList {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
+}
+
+.link {
+  position: relative;
+  display: block;
+  padding: 16px 8px;
+  font-size: 18px;
+  color: #b0bec5;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffad49, transparent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.link:hover,
+.link:focus {
+  color: #ebeef5;
+  transform: translateY(-1px);
+}
+
+.link:hover::after,
+.link:focus::after {
+  width: 100%;
+}
+
+.isActive {
+  position: relative;
+  display: block;
+  padding: 16px 8px;
+  font-size: 18px;
+  color: #ffad49;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.isActive::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffad49, #ff8a00, #ffad49);
+  box-shadow: 0 0 8px rgba(255, 173, 73, 0.4);
+}
+
+/* Дополнительный эффект свечения для активной ссылки */
+.isActive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  right: -10px;
+  bottom: 0;
+  background: rgba(255, 173, 73, 0.05);
+  border-radius: 8px;
+  z-index: -1;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
