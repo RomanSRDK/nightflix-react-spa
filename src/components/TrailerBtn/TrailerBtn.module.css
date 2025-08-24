@@ -37,8 +37,8 @@
 
 .closeButton {
   position: absolute;
-  top: -30px;
-  right: 0;
+  top: 0px;
+  right: -40px;
   color: #fff;
   font-size: 20px;
   line-height: 0;

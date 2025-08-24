@@ -19,19 +19,23 @@ function TrailerBtn({ movieId }) {
   const handleClick = () => {
     dispatch(getTrailerMovie(movieId));
     setIsOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleClose = () => {
     setIsOpen(false);
+    document.body.style.overflow = "";
   };
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         setIsOpen(false);
+        document.body.style.overflow = "";
       }
     };
     document.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
@@ -40,6 +44,7 @@ function TrailerBtn({ movieId }) {
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       setIsOpen(false);
+      document.body.style.overflow = "";
     }
   };
 

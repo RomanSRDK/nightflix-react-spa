@@ -57,7 +57,7 @@ function MovieView({ movieInfo }) {
               </div>
             ))}
           </li>
-          <li>{movieInfo.overview}</li>
+          <li className={styles.overview}>{movieInfo.overview}</li>
 
           <div className={styles.stats}>
             <li>
