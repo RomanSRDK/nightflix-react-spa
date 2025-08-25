@@ -35,7 +35,6 @@ function TrailerBtn({ movieId }) {
       }
     };
     document.addEventListener("keydown", handleKeyDown);
-
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };

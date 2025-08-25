@@ -26,14 +26,12 @@ function HomePage() {
 
   return (
     <>
-      {movies.length > 0 ? (
+      <TrendingPanel timeWindow={timeWindow} onChange={setTimeWindow} />
+      {movies.length > 0 && (
         <>
-          <TrendingPanel timeWindow={timeWindow} onChange={setTimeWindow} />
           <MovieList movies={movies} />
           <PaginationMui />
         </>
-      ) : (
-        <Loader />
       )}
     </>
   );

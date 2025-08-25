@@ -106,38 +106,38 @@ function MovieView({ movieInfo }) {
         <li className={styles.detailCard}>
           <h2 className={styles.detailLabel}>Production Studios</h2>
           <div className={styles.detailValue}>
-            <div className={styles.studiosList}>
+            <ul className={styles.studiosList}>
               {movieInfo.production_companies.length > 0 ? (
                 <>
                   {movieInfo.production_companies.map((company, index) => (
-                    <span key={index} className={styles.studio}>
+                    <li key={index} className={styles.studio}>
                       {company.name}
-                    </span>
+                    </li>
                   ))}
                 </>
               ) : (
                 "N/A"
               )}
-            </div>
+            </ul>
           </div>
         </li>
 
         <li className={styles.detailCard}>
           <h2 className={styles.detailLabel}>Countries</h2>
           <div className={styles.detailValue}>
-            <div className={styles.countriesList}>
+            <ul className={styles.countriesList}>
               {movieInfo.production_countries.length > 0 ? (
                 <>
                   {movieInfo.production_countries.map((country, index) => (
-                    <div key={index} className={styles.countryFlag}>
-                      <span>{country.name}</span>
-                    </div>
+                    <li key={index} className={styles.countryFlag}>
+                      {country.name}
+                    </li>
                   ))}
                 </>
               ) : (
                 "N/A"
               )}
-            </div>
+            </ul>
           </div>
         </li>
       </ul>

@@ -24,6 +24,7 @@ export const moviesSlice = createSlice({
     builder
       .addCase(getTrendingMovies.pending, (state) => {
         state.isLoading = true;
+        state.items = [];
       })
       .addCase(getTrendingMovies.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -40,6 +41,7 @@ export const moviesSlice = createSlice({
       })
       .addCase(getTrailerMovie.pending, (state) => {
         state.isLoading = true;
+        state.trailer = [];
       })
       .addCase(getTrailerMovie.fulfilled, (state, action) => {
         state.isLoading = false;
