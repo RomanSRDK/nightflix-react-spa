@@ -16,10 +16,16 @@ function TrailerBtn({ movieId }) {
   const trailer = useSelector(trailerMovie);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    dispatch(getTrailerMovie(movieId));
-    setIsOpen(true);
-    document.body.style.overflow = "hidden";
+  const handleClick = async () => {
+    try {
+      await dispatch(getTrailerMovie(movieId)).unwrap();
+      setIsOpen(true);
+      document.body.style.overflow = "hidden";
+    } catch (error) {
+      console.error("Error loading trailer:", error);
+      // показать уведомление пользователю
+      // без .catch() - необработанная ошибка попадёт в console
+    }
   };
 
   const handleClose = () => {
@@ -34,7 +40,9 @@ function TrailerBtn({ movieId }) {
         document.body.style.overflow = "";
       }
     };
+
     document.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
@@ -54,19 +62,44 @@ function TrailerBtn({ movieId }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    adaptiveHeight: true,
+    appendDots: (dots) => (
+      <ul
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        {dots}
+      </ul>
+    ),
+    customPaging: (i) => (
+      <div
+        style={{
+          width: "30px",
+          backgroundColor: "rgba(255, 255, 255, 0.05)",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          backdropFilter: "blur(10px)",
+          color: "#ebeef5",
+          borderRadius: "8px",
+        }}
+      >
+        {i + 1}
+      </div>
+    ),
   };
 
   return (
     <div>
-      <button onClick={handleClick} className={styles.watchTrailer}>
+      <button onClick={handleClick} className={styles.watchTrailerBtn}>
         <CiPlay1 />
         Watch trailer
       </button>
 
       {isOpen && (
         <div className={styles.backdrop} onClick={handleBackdropClick}>
-          <div className={styles.modal}>
+          <div className={styles.playerWinow}>
             <button onClick={handleClose} className={styles.closeButton}>
               ✕
             </button>
@@ -78,9 +111,8 @@ function TrailerBtn({ movieId }) {
                     <iframe
                       width="100%"
                       height="450"
-                      src={`https://www.youtube.com/embed/${t.key}`}
+                      src={`https://www.youtube-nocookie.com/embed/${t.key}`}
                       frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                       title={t.name}
                     />

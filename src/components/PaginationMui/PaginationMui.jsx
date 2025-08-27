@@ -41,12 +41,9 @@ function PaginationMui() {
             color: "#1e1e1e", // тёмный текст для контраста
             fontWeight: "bold",
           },
-          // ✅ Отключаем hover для выбранного элемента
-          "& .MuiPaginationItem-root.Mui-selected:hover": {
-            backgroundColor: "#ffb74d",
-          },
-          "& .MuiPaginationItem-root:hover": {
-            backgroundColor: "rgba(255, 183, 77, 0.15)", // мягкий полупрозрачный акцент
+          "& .MuiPaginationItem-root:hover:not(.Mui-selected)": {
+            // ✅ hover только для НЕ выбранных
+            backgroundColor: "rgba(255, 183, 77, 0.15)",
           },
           "& .MuiPaginationItem-ellipsis": {
             color: "#9ea7b8", // серый для троеточия

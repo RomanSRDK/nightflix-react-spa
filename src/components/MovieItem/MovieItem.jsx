@@ -9,6 +9,10 @@ function MovieItem({ movie }) {
   const location = useLocation();
   const year = movie.release_date?.split("-");
 
+  const getInitial = (title) => {
+    return title ? title : "";
+  };
+
   return (
     <>
       <Link
@@ -16,11 +20,18 @@ function MovieItem({ movie }) {
         state={location}
         className={styles.movieItem}
       >
-        <img
-          src={`${BASE_URL_IMG}${movie.poster_path}`}
-          alt={movie.title || movie.original_title}
-          className={styles.posterImg}
-        />
+        {movie.poster_path ? (
+          <img
+            src={`${BASE_URL_IMG}${movie.poster_path}`}
+            alt={movie.title || movie.original_title}
+            className={styles.posterImg}
+          />
+        ) : (
+          <div className={`${styles.imagePlaceholder} ${styles.initials}`}>
+            {getInitial(movie.original_title)}
+          </div>
+        )}
+
         <p className={styles.posterTitle}>
           {movie.title || movie.original_title}
         </p>
@@ -30,11 +41,13 @@ function MovieItem({ movie }) {
         </div>
       </Link>
 
-      <p className={styles.posterYear}> {year[0]}</p>
+      <p className={styles.posterYear}> {movie.release_date ? year[0] : ""}</p>
+
+      {}
 
       <div className={styles.rating}>
         <CiStar className={styles.icon} />
-        <span>{movie.vote_average.toFixed(1)} TMDB</span>
+        {movie.vote_average ? movie.vote_average.toFixed(1) : "0.0"} TMDB
       </div>
     </>
   );

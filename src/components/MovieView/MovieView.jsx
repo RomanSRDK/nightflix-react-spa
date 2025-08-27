@@ -6,9 +6,22 @@ import styles from "./MovieView.module.css";
 
 function MovieView({ movieInfo }) {
   const BASE_URL_IMG = "https://image.tmdb.org/t/p/original";
-  const year = movieInfo.release_date.split("-");
+
+  const formatDate = (dateString) => {
+    const [year, month, day] = dateString.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   const { movieId } = useParams();
+
+  const getInitial = (title) => {
+    return title ? title : "";
+  };
 
   return (
     <div>
@@ -26,14 +39,20 @@ function MovieView({ movieInfo }) {
 
       {/* Content */}
       <div className={styles.container}>
-        <img
-          className={styles.poster}
-          src={`${BASE_URL_IMG}${movieInfo.poster_path}`}
-          alt={movieInfo.title}
-        />
+        {movieInfo.poster_path ? (
+          <img
+            className={styles.poster}
+            src={`${BASE_URL_IMG}${movieInfo.poster_path}`}
+            alt={movieInfo.title}
+          />
+        ) : (
+          <div className={`${styles.imagePlaceholder} ${styles.initials}`}>
+            {getInitial(movieInfo.title)}
+          </div>
+        )}
 
         <ul className={styles.infoList}>
-          <li className={styles.year}>{year[0]}</li>
+          <li className={styles.year}>{formatDate(movieInfo.release_date)}</li>
           <li>
             <h1 className={styles.title}>{movieInfo.title}</h1>
           </li>
@@ -64,8 +83,8 @@ function MovieView({ movieInfo }) {
               <div className={styles.rating}>
                 <CiStar className={styles.starIcon} />
                 {movieInfo.vote_average.toFixed(1)}
-              </div>{" "}
-              {" / "}{" "}
+              </div>
+              {" / "}
               {movieInfo.vote_count
                 .toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}{" "}

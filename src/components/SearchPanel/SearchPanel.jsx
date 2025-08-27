@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 import { getMoviesByName } from "../../redux/movies/operations";
 import styles from "./SearchPanel.module.css";
+import { clearFoundMovies } from "../../redux/movies/slice";
 
 function SearchPanel() {
   const dispatch = useDispatch();
@@ -20,12 +21,17 @@ function SearchPanel() {
       nextSearchParams.set("name", newQuery);
     } else {
       nextSearchParams.delete("name");
+      nextSearchParams.delete("page");
     }
     setSearchParams(nextSearchParams);
   };
 
   useEffect(() => {
-    if (!debouncedQuery) return;
+    if (!debouncedQuery) {
+      dispatch(clearFoundMovies());
+      return;
+    }
+
     dispatch(getMoviesByName({ debouncedQuery, page }));
   }, [dispatch, debouncedQuery, page]);
 

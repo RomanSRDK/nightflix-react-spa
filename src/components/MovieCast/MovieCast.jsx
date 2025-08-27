@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { castInfo } from "../../redux/movies/selectors";
 import { getActorsCast } from "../../redux/movies/operations";
-import styles from "./MovieCast.module.css";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import styles from "./MovieCast.module.css";
 
 function MovieCast() {
   const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
