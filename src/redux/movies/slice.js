@@ -17,6 +17,7 @@ export const moviesSlice = createSlice({
     foundMovies: [],
     castInfo: [],
     reviewsInfo: [],
+    isSearched: false,
     isLoading: false,
     totalPages: 0,
   },
@@ -24,6 +25,7 @@ export const moviesSlice = createSlice({
     clearFoundMovies: (state) => {
       state.foundMovies = [];
       state.totalPages = 0;
+      state.isSearched = false;
     },
   },
   extraReducers: (builder) => {
@@ -61,6 +63,7 @@ export const moviesSlice = createSlice({
       })
       .addCase(getMoviesByName.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isSearched = true;
         state.foundMovies = action.payload.results;
         state.totalPages = action.payload.total_pages;
       })

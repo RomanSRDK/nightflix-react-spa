@@ -12,7 +12,7 @@ function SearchPanel() {
   const filmName = searchParams.get("name") ?? "";
   const page = parseInt(searchParams.get("page")) || 1;
 
-  const [debouncedQuery] = useDebounce(filmName, 300);
+  const [debouncedQuery] = useDebounce(filmName, 1000);
 
   const changeSearchQuery = (evt) => {
     const newQuery = evt.target.value;

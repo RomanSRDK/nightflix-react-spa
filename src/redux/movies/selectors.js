@@ -6,3 +6,4 @@ export const trailerMovie = (state) => state.movies.trailer;
 export const foundMovies = (state) => state.movies.foundMovies;
 export const castInfo = (state) => state.movies.castInfo;
 export const reviewsInfo = (state) => state.movies.reviewsInfo;
+export const isSearched = (state) => state.movies.isSearched;
