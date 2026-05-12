@@ -1,25 +1,24 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const AUTH_TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOTQzM2E0M2MwOGVlZGNlM2JiZmNiYjEwZTk2NzFhOSIsIm5iZiI6MTc0OTg5NjUwNi4zOTIsInN1YiI6IjY4NGQ0ZDNhMWQ2YzRhNDc0ZWJiNGE3OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QdPDsg81ywDhazmprFyPiSM7lF9J4OAq_E-SSVhqDTw";
+const myToken = import.meta.env.VITE_TMDB_TOKEN;
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
-axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+axios.defaults.headers.common["Authorization"] = `Bearer ${myToken}`;
 
 export const getTrendingMovies = createAsyncThunk(
   "movies/getTranding",
   async ({ timeWindow, page }, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/trending/movie/${timeWindow}?page=${page}`
+        `/trending/movie/${timeWindow}?page=${page}`,
       );
       console.log(data);
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const getMovieById = createAsyncThunk(
@@ -32,7 +31,7 @@ export const getMovieById = createAsyncThunk(
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const getTrailerMovie = createAsyncThunk(
@@ -44,7 +43,7 @@ export const getTrailerMovie = createAsyncThunk(
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const getMoviesByName = createAsyncThunk(
@@ -52,14 +51,14 @@ export const getMoviesByName = createAsyncThunk(
   async ({ debouncedQuery, page }, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/search/movie?query=${debouncedQuery}&page=${page}`
+        `/search/movie?query=${debouncedQuery}&page=${page}`,
       );
       console.log(data);
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const getActorsCast = createAsyncThunk(
@@ -67,14 +66,14 @@ export const getActorsCast = createAsyncThunk(
   async (movieId, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/movie/${movieId}/credits?language=en-US`
+        `/movie/${movieId}/credits?language=en-US`,
       );
       console.log(data.cast);
       return data.cast;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const getReviews = createAsyncThunk(
@@ -82,12 +81,12 @@ export const getReviews = createAsyncThunk(
   async (movieId, ThunkAPI) => {
     try {
       const { data } = await axios.get(
-        `/movie/${movieId}/reviews?language=en-US`
+        `/movie/${movieId}/reviews?language=en-US`,
       );
       console.log(data.results);
       return data.results;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );

@@ -1,15 +1,14 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
-import Header from "./components/Header/Header";
-import MovieCast from "./components/MovieCast/MovieCast";
-import MovieReviews from "./components/MovieReviews/MovieReviews";
+import Header from "../Header/Header";
+import MovieCast from "../MovieCast/MovieCast";
+import MovieReviews from "../MovieReviews/MovieReviews";
 
-const HomePage = lazy(() => import("./pages/HomePage"));
-const SearchPage = lazy(() => import("./pages/SearchPage"));
-const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
-const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const HomePage = lazy(() => import("../../pages/HomePage"));
+const SearchPage = lazy(() => import("../../pages/SearchPage"));
+const MovieDetailsPage = lazy(() => import("../../pages/MovieDetailsPage"));
+const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 
-// Layout с Header
 function LayoutWithHeader() {
   return (
     <>
@@ -19,7 +18,6 @@ function LayoutWithHeader() {
   );
 }
 
-// Layout без Header
 function LayoutWithoutHeader() {
   return <Outlet />;
 }
