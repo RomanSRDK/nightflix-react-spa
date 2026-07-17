@@ -3,6 +3,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import Header from "../Header/Header";
 import MovieCast from "../MovieCast/MovieCast";
 import MovieReviews from "../MovieReviews/MovieReviews";
+import Loader from "../Loader/Loader";
 
 const HomePage = lazy(() => import("../../pages/HomePage"));
 const SearchPage = lazy(() => import("../../pages/SearchPage"));
@@ -24,7 +25,7 @@ function LayoutWithoutHeader() {
 
 function App() {
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         {/* Маршруты с Header */}
         <Route element={<LayoutWithHeader />}>

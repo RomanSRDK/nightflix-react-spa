@@ -35,21 +35,23 @@ function SearchPanel() {
       return;
     }
 
+    if (debouncedQuery !== filmName) {
+      return;
+    }
+
     dispatch(getMoviesByName({ debouncedQuery, page }));
-  }, [dispatch, debouncedQuery, page]);
+  }, [dispatch, debouncedQuery, filmName, page]);
 
   return (
-    <>
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          placeholder="Find your movie for tonight"
-          value={filmName}
-          onChange={changeSearchQuery}
-          className={styles.searchInput}
-        />
-      </div>
-    </>
+    <div className={styles.searchContainer}>
+      <input
+        type="text"
+        placeholder="Find your movie for tonight"
+        value={filmName}
+        onChange={changeSearchQuery}
+        className={styles.searchInput}
+      />
+    </div>
   );
 }
 

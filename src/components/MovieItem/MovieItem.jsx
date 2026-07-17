@@ -42,8 +42,6 @@ function MovieItem({ movie }) {
 
       <p className={styles.posterYear}> {movie.release_date ? year[0] : ""}</p>
 
-      {}
-
       <div className={styles.rating}>
         <CiStar className={styles.icon} />
         {movie.vote_average ? movie.vote_average.toFixed(1) : "0.0"} TMDB

@@ -45,6 +45,7 @@ function TrailerBtn({ movieId }) {
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
     };
   }, []);
 
@@ -99,7 +100,7 @@ function TrailerBtn({ movieId }) {
 
       {isOpen && (
         <div className={styles.backdrop} onClick={handleBackdropClick}>
-          <div className={styles.playerWinow}>
+          <div className={styles.playerWindow}>
             <button onClick={handleClose} className={styles.closeButton}>
               ✕
             </button>

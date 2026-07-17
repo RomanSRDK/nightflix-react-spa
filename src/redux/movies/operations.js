@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { tmdbApi } from "../../services/tmdbApi";
 
 export const getTrendingMovies = createAsyncThunk(
-  "movies/getTranding",
+  "movies/getTrending",
   async ({ timeWindow, page }, ThunkAPI) => {
     try {
       const { data } = await tmdbApi.get(
