@@ -1,16 +1,11 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-
-const myToken = import.meta.env.VITE_TMDB_TOKEN;
-
-axios.defaults.baseURL = "https://api.themoviedb.org/3";
-axios.defaults.headers.common["Authorization"] = `Bearer ${myToken}`;
+import { tmdbApi } from "../../services/tmdbApi";
 
 export const getTrendingMovies = createAsyncThunk(
   "movies/getTranding",
   async ({ timeWindow, page }, ThunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await tmdbApi.get(
         `/trending/movie/${timeWindow}?page=${page}`,
       );
       console.log(data);
@@ -25,7 +20,7 @@ export const getMovieById = createAsyncThunk(
   "movies/getMovieById",
   async (movieId, ThunkAPI) => {
     try {
-      const { data } = await axios.get(`/movie/${movieId}`);
+      const { data } = await tmdbApi.get(`/movie/${movieId}`);
       console.log(data);
       return data;
     } catch (error) {
@@ -38,7 +33,7 @@ export const getTrailerMovie = createAsyncThunk(
   "movies/getTrailerMovie",
   async (movieId, ThunkAPI) => {
     try {
-      const { data } = await axios.get(`/movie/${movieId}/videos`);
+      const { data } = await tmdbApi.get(`/movie/${movieId}/videos`);
       return data.results.filter(({ type }) => type === "Trailer");
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
@@ -50,7 +45,7 @@ export const getMoviesByName = createAsyncThunk(
   "movies/getMoviesByName",
   async ({ debouncedQuery, page }, ThunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await tmdbApi.get(
         `/search/movie?query=${debouncedQuery}&page=${page}`,
       );
       console.log(data);
@@ -65,7 +60,7 @@ export const getActorsCast = createAsyncThunk(
   "movies/getActorsCast",
   async (movieId, ThunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await tmdbApi.get(
         `/movie/${movieId}/credits?language=en-US`,
       );
       console.log(data.cast);
@@ -80,7 +75,7 @@ export const getReviews = createAsyncThunk(
   "movies/getReviews",
   async (movieId, ThunkAPI) => {
     try {
-      const { data } = await axios.get(
+      const { data } = await tmdbApi.get(
         `/movie/${movieId}/reviews?language=en-US`,
       );
       console.log(data.results);

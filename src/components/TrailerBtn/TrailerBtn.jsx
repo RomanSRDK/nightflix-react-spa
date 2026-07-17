@@ -74,7 +74,7 @@ function TrailerBtn({ movieId }) {
         {dots}
       </ul>
     ),
-    customPaging: (i) => (
+    customPaging: (index) => (
       <div
         style={{
           width: "30px",
@@ -85,7 +85,7 @@ function TrailerBtn({ movieId }) {
           borderRadius: "8px",
         }}
       >
-        {i + 1}
+        {index + 1}
       </div>
     ),
   };

@@ -17,13 +17,16 @@ function SearchPanel() {
   const changeSearchQuery = (evt) => {
     const newQuery = evt.target.value;
     const nextSearchParams = new URLSearchParams(searchParams);
+
     if (newQuery !== "") {
       nextSearchParams.set("name", newQuery);
+      nextSearchParams.set("page", "1");
     } else {
       nextSearchParams.delete("name");
       nextSearchParams.delete("page");
     }
-    setSearchParams(nextSearchParams);
+
+    setSearchParams(nextSearchParams, { replace: true });
   };
 
   useEffect(() => {

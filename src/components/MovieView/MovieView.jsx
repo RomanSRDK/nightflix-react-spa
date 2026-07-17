@@ -3,11 +3,14 @@ import { LuClock4 } from "react-icons/lu";
 import { useParams } from "react-router-dom";
 import TrailerBtn from "../TrailerBtn/TrailerBtn";
 import styles from "./MovieView.module.css";
+import { BASE_URL_IMG } from "../../constants/tmdbConstants";
 
 function MovieView({ movieInfo }) {
-  const BASE_URL_IMG = "https://image.tmdb.org/t/p/original";
-
+  const { movieId } = useParams();
   const formatDate = (dateString) => {
+    if (!dateString) {
+      return "Release date unavailable";
+    }
     const [year, month, day] = dateString.split("-").map(Number);
     const date = new Date(year, month - 1, day);
     return date.toLocaleDateString("en-US", {
@@ -16,8 +19,6 @@ function MovieView({ movieInfo }) {
       day: "numeric",
     });
   };
-
-  const { movieId } = useParams();
 
   const getInitial = (title) => {
     return title ? title : "";
@@ -128,8 +129,8 @@ function MovieView({ movieInfo }) {
             <ul className={styles.studiosList}>
               {movieInfo.production_companies.length > 0 ? (
                 <>
-                  {movieInfo.production_companies.map((company, index) => (
-                    <li key={index} className={styles.studio}>
+                  {movieInfo.production_companies.map((company) => (
+                    <li key={company.id} className={styles.studio}>
                       {company.name}
                     </li>
                   ))}

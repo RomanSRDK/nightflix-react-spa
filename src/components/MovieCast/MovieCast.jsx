@@ -3,12 +3,11 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { castInfo } from "../../redux/movies/selectors";
 import { getActorsCast } from "../../redux/movies/operations";
+import { IMG_URL_W500 } from "../../constants/tmdbConstants";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import styles from "./MovieCast.module.css";
 
 function MovieCast() {
-  const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
-
   const dispatch = useDispatch();
   const actors = useSelector(castInfo);
   const { movieId } = useParams();
@@ -44,7 +43,7 @@ function MovieCast() {
           <li key={actor.id} className={styles.item}>
             {actor.profile_path ? (
               <img
-                src={`${BASE_URL_IMG}${actor.profile_path}`}
+                src={`${IMG_URL_W500}${actor.profile_path}`}
                 alt={actor.original_name}
                 className={styles.image}
               />

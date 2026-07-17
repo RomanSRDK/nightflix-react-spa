@@ -1,5 +1,6 @@
 .container {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   padding: 0 20px;
   margin: 0 auto;
 }
@@ -15,7 +16,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse at 20% 30%,
       rgba(80, 120, 200, 0.12),
       transparent 60%

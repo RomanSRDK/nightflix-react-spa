@@ -1,17 +1,18 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { totalPages } from "../../redux/movies/selectors";
-import { Container, Pagination, PaginationItem } from "@mui/material";
+import { Container, Pagination } from "@mui/material";
 
-function PaginationMui() {
+export default function PaginationMui() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const pageQty = useSelector(totalPages);
   const currentPage = parseInt(searchParams.get("page")) || 1;
   const searchQuery = searchParams.get("name");
-  const pageQty = useSelector(totalPages);
 
-  const handlePageChange = (_, newPage) => {
+  const handlePageChange = (_, nextPage) => {
     const nextSearchParams = new URLSearchParams(searchParams);
-    nextSearchParams.set("page", newPage);
+
+    nextSearchParams.set("page", nextPage);
 
     if (!searchQuery) {
       nextSearchParams.delete("name");
@@ -26,45 +27,29 @@ function PaginationMui() {
     <Container sx={{ my: 5, display: "flex", justifyContent: "center" }}>
       <Pagination
         count={pageQty}
+        shape="rounded"
+        variant="outlined"
         page={currentPage}
         onChange={handlePageChange}
-        variant="outlined"
-        shape="rounded"
         sx={{
           "& .MuiPaginationItem-root": {
-            color: "#ebeef5", // светлый текст
+            color: "#ebeef5",
             backgroundColor: "transparent",
             borderRadius: "8px",
           },
           "& .MuiPaginationItem-root.Mui-selected": {
             backgroundColor: "#ffb74d",
-            color: "#1e1e1e", // тёмный текст для контраста
+            color: "#1e1e1e",
             fontWeight: "bold",
           },
           "& .MuiPaginationItem-root:hover:not(.Mui-selected)": {
-            // ✅ hover только для НЕ выбранных
             backgroundColor: "rgba(255, 183, 77, 0.15)",
           },
           "& .MuiPaginationItem-ellipsis": {
-            color: "#9ea7b8", // серый для троеточия
+            color: "#9ea7b8",
           },
-        }}
-        renderItem={(item) => {
-          const params = new URLSearchParams();
-          if (searchQuery) params.set("name", searchQuery);
-          params.set("page", item.page);
-
-          return (
-            <PaginationItem
-              component={Link}
-              to={`?${params.toString()}`}
-              {...item}
-            />
-          );
         }}
       />
     </Container>
   );
 }
-
-export default PaginationMui;

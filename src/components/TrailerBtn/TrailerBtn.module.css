@@ -63,3 +63,8 @@
   color: #ebeef5;
   text-align: center;
 }
+
+:global(li.slick-active) {
+  border-radius: 8px;
+  background-color: #ffad49;
+}

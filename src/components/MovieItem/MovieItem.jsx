@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
 import { IoInformationCircleOutline } from "react-icons/io5";
+import { IMG_URL_W500 } from "../../constants/tmdbConstants";
 import styles from "./MovieItem.module.css";
-
-const BASE_URL_IMG = "https://image.tmdb.org/t/p/w500";
 
 function MovieItem({ movie }) {
   const location = useLocation();
@@ -22,7 +21,7 @@ function MovieItem({ movie }) {
       >
         {movie.poster_path ? (
           <img
-            src={`${BASE_URL_IMG}${movie.poster_path}`}
+            src={`${IMG_URL_W500}${movie.poster_path}`}
             alt={movie.title || movie.original_title}
             className={styles.posterImg}
           />
