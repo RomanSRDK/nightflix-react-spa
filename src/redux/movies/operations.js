@@ -85,3 +85,20 @@ export const getReviews = createAsyncThunk(
     }
   },
 );
+
+export const getFavoriteMovies = createAsyncThunk(
+  "movies/getFavoriteMovies",
+  async (movieIds, ThunkAPI) => {
+    try {
+      const requests = movieIds.map((movieId) =>
+        tmdbApi.get(`/movie/${movieId}`),
+      );
+
+      const responses = await Promise.all(requests);
+
+      return responses.map(({ data }) => data);
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error);
+    }
+  },
+);

@@ -1,0 +1,124 @@
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px 20px;
+  background-color: rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  max-height: 140px;
+  resize: none;
+  overflow-y: hidden;
+  padding: 13px 110px 13px 20px;
+  color: #ebeef5;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.4;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.input:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.input:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 173, 73, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 173, 73, 0.1);
+}
+
+.sendButton {
+  position: absolute;
+  right: 6px;
+  padding: 13px 26px;
+  color: #ebeef5;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
+}
+
+.sendButton:hover:not(:disabled),
+.sendButton:focus-visible:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.sendButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.resetButton {
+  position: relative;
+  flex-shrink: 0;
+  padding: 11px 24px;
+  color: #ebeef5;
+  background-color: rgba(255, 255, 255, 0.05);
+
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  font-size: 15px;
+  font-weight: 500;
+  transition:
+    background-color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.resetButton::after {
+  content: "New Chat";
+
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translate(-50%, 4px);
+
+  padding: 6px 10px;
+  color: #ebeef5;
+  background-color: rgba(15, 15, 18, 0.95);
+  border: 1px solid #ffad49;
+  border-radius: 6px;
+
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 400;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+}
+
+.resetButton:hover:not(:disabled)::after,
+.resetButton:focus-visible:not(:disabled)::after {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translate(-50%, 0);
+}

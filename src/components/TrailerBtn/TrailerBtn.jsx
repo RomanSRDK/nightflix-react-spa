@@ -6,13 +6,15 @@ import { CiPlay1 } from "react-icons/ci";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { trailerMovie } from "../../redux/movies/selectors";
+import { isLoading, trailerMovie } from "../../redux/movies/selectors";
 import { getTrailerMovie } from "../../redux/movies/operations";
 
 import styles from "./TrailerBtn.module.css";
+import Loader from "../Loader/Loader";
 
 function TrailerBtn({ movieId }) {
   const dispatch = useDispatch();
+  const loader = useSelector(isLoading);
   const trailer = useSelector(trailerMovie);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -56,7 +58,7 @@ function TrailerBtn({ movieId }) {
     }
   };
 
-  // Настройки слайдера react-slick
+  // react-slick settings
   const sliderSettings = {
     dots: true,
     infinite: trailer.length > 1,
@@ -89,6 +91,7 @@ function TrailerBtn({ movieId }) {
         {index + 1}
       </div>
     ),
+    // react-slick settings
   };
 
   return (
@@ -97,6 +100,8 @@ function TrailerBtn({ movieId }) {
         <CiPlay1 />
         Watch trailer
       </button>
+
+      {loader && <Loader />}
 
       {isOpen && (
         <div className={styles.backdrop} onClick={handleBackdropClick}>

@@ -22,6 +22,16 @@ function Header() {
                 Search Movies
               </NavLink>
             </li>
+            <li className={css.navItem}>
+              <NavLink to="/favorites" className={getActiveLinkClass}>
+                Favorites
+              </NavLink>
+            </li>
+            <li className={css.navItem}>
+              <NavLink to="/movie-assistant" className={getActiveLinkClass}>
+                NightFlix AI
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>

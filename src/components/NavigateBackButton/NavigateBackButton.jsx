@@ -5,7 +5,6 @@ import styles from "./NavigateBackButton.module.css";
 
 function NavigateBackButton() {
   const location = useLocation();
-
   const backLinkRef = useRef(location.state || "/");
 
   return (

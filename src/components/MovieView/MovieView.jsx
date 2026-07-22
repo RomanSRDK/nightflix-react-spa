@@ -1,12 +1,13 @@
-import { CiStar } from "react-icons/ci";
-import { LuClock4 } from "react-icons/lu";
 import { useParams } from "react-router-dom";
 import TrailerBtn from "../TrailerBtn/TrailerBtn";
-import styles from "./MovieView.module.css";
+import { CiStar } from "react-icons/ci";
+import { LuClock4 } from "react-icons/lu";
 import { BASE_URL_IMG } from "../../constants/tmdbConstants";
+import styles from "./MovieView.module.css";
 
 function MovieView({ movieInfo }) {
   const { movieId } = useParams();
+
   const formatDate = (dateString) => {
     if (!dateString) {
       return "Release date unavailable";
@@ -115,11 +116,13 @@ function MovieView({ movieInfo }) {
         <li className={styles.detailCard}>
           <h2 className={styles.detailLabel}>Budget</h2>
           <div className={styles.detailValue}>
-            {movieInfo.budget > 0
-              ? `$ ${movieInfo.budget
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-              : "N/A"}
+            <span className={styles.movieBudget}>
+              {movieInfo.budget > 0
+                ? `$ ${movieInfo.budget
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+                : "N/A"}
+            </span>
           </div>
         </li>
 

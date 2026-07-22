@@ -7,8 +7,9 @@ import MovieView from "../components/MovieView/MovieView";
 import MovieNav from "../components/MovieNav/MovieNav";
 import NavigateBackButton from "../components/NavigateBackButton/NavigateBackButton";
 import Loader from "../components/Loader/Loader";
+import FavoriteButton from "../components/FavoriteButton/FavoriteButton";
 
-function MovieDetailsPage() {
+export default function MovieDetailsPage() {
   const dispatch = useDispatch();
   const { movieId } = useParams();
   const info = useSelector(movieInfo);
@@ -21,7 +22,16 @@ function MovieDetailsPage() {
     <div className="container">
       {info ? (
         <div>
-          <NavigateBackButton />
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <NavigateBackButton />
+            <FavoriteButton />
+          </div>
           <MovieView movieInfo={info} />
           <MovieNav />
           <Outlet />
@@ -32,5 +42,3 @@ function MovieDetailsPage() {
     </div>
   );
 }
-
-export default MovieDetailsPage;

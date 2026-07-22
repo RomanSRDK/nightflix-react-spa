@@ -180,6 +180,15 @@
   font-weight: 500;
 }
 
+.movieBudget {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  color: #e1f5fe;
+  white-space: nowrap;
+}
+
 .studiosList {
   display: flex;
   flex-wrap: wrap;

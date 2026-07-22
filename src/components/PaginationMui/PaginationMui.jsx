@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { totalPages } from "../../redux/movies/selectors";
 import { Container, Pagination } from "@mui/material";
 
+import styles from "./PaginationMui.module.css";
+
 export default function PaginationMui() {
   const [searchParams, setSearchParams] = useSearchParams();
   const pageQty = useSelector(totalPages);
@@ -24,7 +26,7 @@ export default function PaginationMui() {
   };
 
   return (
-    <Container sx={{ my: 5, display: "flex", justifyContent: "center" }}>
+    <Container className={styles.container}>
       <Pagination
         count={pageQty}
         shape="rounded"

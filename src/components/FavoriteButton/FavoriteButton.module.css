@@ -1,0 +1,56 @@
+.favoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 20px;
+  color: #ebeef5;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.favoriteButton svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+}
+
+.favoriteButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.favoriteButton:focus-visible {
+  outline: 2px solid rgba(255, 173, 73, 0.7);
+  outline-offset: 3px;
+}
+
+.active {
+  color: #ffad49;
+  border-color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 173, 73, 0.08),
+    0 0 18px rgba(255, 173, 73, 0.16);
+}
+
+.active:hover {
+  background-color: rgba(255, 173, 73, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(255, 173, 73, 0.12),
+    0 0 24px rgba(255, 173, 73, 0.22);
+}
