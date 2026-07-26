@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import TrailerBtn from "../TrailerBtn/TrailerBtn";
 import { CiStar } from "react-icons/ci";
 import { LuClock4 } from "react-icons/lu";
+import { LuExternalLink } from "react-icons/lu";
 import { BASE_URL_IMG } from "../../constants/tmdbConstants";
 import styles from "./MovieView.module.css";
 
@@ -19,10 +20,6 @@ function MovieView({ movieInfo }) {
       month: "long",
       day: "numeric",
     });
-  };
-
-  const getInitial = (title) => {
-    return title ? title : "";
   };
 
   return (
@@ -49,7 +46,7 @@ function MovieView({ movieInfo }) {
           />
         ) : (
           <div className={`${styles.imagePlaceholder} ${styles.initials}`}>
-            {getInitial(movieInfo.title)}
+            {movieInfo.title ? movieInfo.title : movieInfo.original_title}
           </div>
         )}
 
@@ -106,61 +103,87 @@ function MovieView({ movieInfo }) {
             </li>
           </div>
 
-          <li>
+          <li className={styles.actions}>
             <TrailerBtn movieId={movieId} />
+            {movieInfo.homepage && (
+              <a
+                className={styles.officialWebsite}
+                href={movieInfo.homepage}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit the official website for ${movieInfo.title}`}
+              >
+                <LuExternalLink aria-hidden="true" />
+                <span>Visit Official Movie Site</span>
+              </a>
+            )}
           </li>
         </ul>
       </div>
 
       <ul className={styles.detailsGrid}>
-        <li className={styles.detailCard}>
+        <li className={`${styles.detailCard} ${styles.budgetCard}`}>
           <h2 className={styles.detailLabel}>Budget</h2>
+
           <div className={styles.detailValue}>
-            <span className={styles.movieBudget}>
-              {movieInfo.budget > 0
-                ? `$ ${movieInfo.budget
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
-                : "N/A"}
-            </span>
+            {movieInfo.budget > 0 ? (
+              <span className={styles.movieBudget}>
+                {`$${movieInfo.budget.toLocaleString("en-US")}`}
+              </span>
+            ) : (
+              <span className={styles.emptyValue}>N/A</span>
+            )}
           </div>
         </li>
 
-        <li className={styles.detailCard}>
-          <h2 className={styles.detailLabel}>Production Studios</h2>
-          <div className={styles.detailValue}>
-            <ul className={styles.studiosList}>
-              {movieInfo.production_companies.length > 0 ? (
-                <>
-                  {movieInfo.production_companies.map((company) => (
-                    <li key={company.id} className={styles.studio}>
-                      {company.name}
-                    </li>
-                  ))}
-                </>
-              ) : (
-                "N/A"
-              )}
-            </ul>
-          </div>
-        </li>
-
-        <li className={styles.detailCard}>
+        <li className={`${styles.detailCard} ${styles.countriesCard}`}>
           <h2 className={styles.detailLabel}>Countries</h2>
+
           <div className={styles.detailValue}>
-            <ul className={styles.countriesList}>
-              {movieInfo.production_countries.length > 0 ? (
-                <>
-                  {movieInfo.production_countries.map((country, index) => (
-                    <li key={index} className={styles.countryFlag}>
-                      {country.name}
-                    </li>
-                  ))}
-                </>
-              ) : (
-                "N/A"
-              )}
-            </ul>
+            {movieInfo.production_countries.length > 0 ? (
+              <ul className={styles.countriesList}>
+                {movieInfo.production_countries.map((country) => (
+                  <li key={country.iso_3166_1} className={styles.country}>
+                    {country.name}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <span className={styles.emptyValue}>N/A</span>
+            )}
+          </div>
+        </li>
+
+        <li className={`${styles.detailCard} ${styles.studiosCard}`}>
+          <h2 className={styles.detailLabel}>Production Studios</h2>
+
+          <div className={styles.detailValue}>
+            {movieInfo.production_companies.length > 0 ? (
+              <ul className={styles.studiosList}>
+                {movieInfo.production_companies.map((company) => (
+                  <li key={company.id} className={styles.studio}>
+                    <div
+                      className={`${styles.studioLogoWrapper} ${
+                        !company.logo_path ? styles.emptyStudioLogo : ""
+                      }`}
+                    >
+                      {company.logo_path && (
+                        <img
+                          className={styles.studioLogo}
+                          src={`${BASE_URL_IMG}${company.logo_path}`}
+                          alt={`${company.name} logo`}
+                          loading="lazy"
+                        />
+                      )}
+                    </div>
+
+                    <span className={styles.studioName}>{company.name}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <span className={styles.emptyValue}>N/A</span>
+            )}
           </div>
         </li>
       </ul>

@@ -1,0 +1,125 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 620px;
+  padding: 48px 32px;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  top: -90px;
+  left: 50%;
+  width: 240px;
+  height: 180px;
+  background-color: rgba(255, 173, 73, 0.08);
+  border-radius: 50%;
+  filter: blur(50px);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.code {
+  margin-bottom: 8px;
+  color: #ffad49;
+  font-size: clamp(64px, 12vw, 108px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -4px;
+  text-shadow:
+    0 0 18px rgba(255, 173, 73, 0.2),
+    0 0 42px rgba(255, 173, 73, 0.08);
+}
+
+.title {
+  margin-bottom: 16px;
+  color: #ebeef5;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.description {
+  max-width: 480px;
+  margin: 0 auto 32px;
+  color: rgba(235, 238, 245, 0.7);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.redirectText {
+  margin: 0;
+  color: rgba(235, 238, 245, 0.52);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.homeLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+  border: 1px solid rgba(255, 173, 73, 0.22);
+  border-radius: 6px;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.homeLink:hover {
+  color: #ffc071;
+  background-color: rgba(255, 173, 73, 0.15);
+  border-color: rgba(255, 173, 73, 0.45);
+}
+
+.homeLink:focus-visible {
+  outline: 2px solid rgba(255, 173, 73, 0.7);
+  outline-offset: 3px;
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    min-height: calc(100vh - 120px);
+    padding: 24px 16px;
+  }
+
+  .content {
+    padding: 40px 20px;
+  }
+
+  .code {
+    letter-spacing: -2px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .redirectText {
+    font-size: 13px;
+  }
+}

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { CiStar } from "react-icons/ci";
-import { IoInformationCircleOutline } from "react-icons/io5";
+import { LuCalendarDays } from "react-icons/lu";
 import { IMG_URL_W500 } from "../../constants/tmdbConstants";
 import styles from "./MovieItem.module.css";
 
@@ -8,8 +8,21 @@ function MovieItem({ movie }) {
   const location = useLocation();
   const year = movie.release_date?.split("-");
 
-  const getInitial = (title) => {
-    return title ? title : "";
+  const getReleaseStatus = (releaseDate) => {
+    if (!releaseDate) {
+      return "TBA";
+    }
+
+    const today = new Date();
+    const release = new Date(`${releaseDate}T00:00:00`);
+
+    today.setHours(0, 0, 0, 0);
+
+    if (release.getTime() === today.getTime()) {
+      return "Out Today";
+    }
+
+    return release > today ? "Coming Soon" : "Released";
   };
 
   return (
@@ -27,7 +40,7 @@ function MovieItem({ movie }) {
           />
         ) : (
           <div className={`${styles.imagePlaceholder} ${styles.initials}`}>
-            {getInitial(movie.original_title)}
+            {movie.title ? movie.title : movie.original_title}
           </div>
         )}
 
@@ -35,12 +48,14 @@ function MovieItem({ movie }) {
           {movie.title || movie.original_title}
         </p>
         <div className={styles.infoBtnContainer}>
-          <IoInformationCircleOutline className={styles.icon} />
-          <span>More info</span>
+          <LuCalendarDays className={styles.icon} />
+          <span>{getReleaseStatus(movie.release_date)}</span>
         </div>
       </Link>
 
-      <p className={styles.posterYear}> {movie.release_date ? year[0] : ""}</p>
+      <p className={styles.posterYear}>
+        {movie.release_date ? year[0] : "Release date unavailable"}
+      </p>
 
       <div className={styles.rating}>
         <CiStar className={styles.icon} />

@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { CiHeart } from "react-icons/ci";
+import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { toggleFavorite } from "../../redux/movies/slice";
 import { favoriteMovieIds } from "../../redux/movies/selectors";
@@ -10,11 +11,22 @@ function FavoriteButton() {
   const dispatch = useDispatch();
   const { movieId } = useParams();
 
+  const [isBursting, setIsBursting] = useState(false);
+
   const favorites = useSelector(favoriteMovieIds);
-  const isFavorite = favorites.includes(Number(movieId));
+  const numericMovieId = Number(movieId);
+  const isFavorite = favorites.includes(numericMovieId);
 
   const handleFavoriteClick = () => {
-    dispatch(toggleFavorite(Number(movieId)));
+    if (!isFavorite) {
+      setIsBursting(true);
+    }
+
+    dispatch(toggleFavorite(numericMovieId));
+  };
+
+  const handleBurstAnimationEnd = () => {
+    setIsBursting(false);
   };
 
   return (
@@ -26,9 +38,28 @@ function FavoriteButton() {
         isFavorite ? "Remove movie from favorites" : "Add movie to favorites"
       }
     >
-      {isFavorite ? <FaHeart /> : <CiHeart />}
+      <span className={styles.iconWrapper}>
+        {isFavorite ? <FaHeart /> : <FaRegHeart />}
 
-      <span>{isFavorite ? "In favorites" : "Add to favorites"}</span>
+        {isBursting && (
+          <span
+            className={styles.burst}
+            aria-hidden="true"
+            onAnimationEnd={handleBurstAnimationEnd}
+          >
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </span>
+        )}
+      </span>
+
+      <span>{isFavorite ? "In Favorites" : "Add to Favorites"}</span>
     </button>
   );
 }

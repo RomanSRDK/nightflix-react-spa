@@ -36,7 +36,7 @@ function MessageForm({
           type="submit"
           disabled={isLoading || inputValue.trim() === ""}
           className={styles.sendButton}
-          aria-label="Отправить сообщение"
+          aria-label="Send message"
         >
           <GrSend size={24} />
         </button>
@@ -47,7 +47,7 @@ function MessageForm({
         onClick={onResetConversation}
         disabled={isLoading}
         className={styles.resetButton}
-        aria-label="Новый чат"
+        aria-label="New chat"
       >
         <VscChatSparkle size={24} />
       </button>

@@ -25,8 +25,6 @@ function TrailerBtn({ movieId }) {
       document.body.style.overflow = "hidden";
     } catch (error) {
       console.error("Error loading trailer:", error);
-      // показать уведомление пользователю
-      // без .catch() - необработанная ошибка попадёт в console
     }
   };
 
@@ -115,12 +113,15 @@ function TrailerBtn({ movieId }) {
                 {trailer.map((t) => (
                   <div key={t.key}>
                     <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${t.key}`}
+                      title={t.name}
                       width="100%"
                       height="450"
-                      src={`https://www.youtube-nocookie.com/embed/${t.key}`}
-                      frameBorder="0"
                       allowFullScreen
-                      title={t.name}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      frameBorder="0"
+                      loading="lazy"
+                      referrerPolicy="strict-origin-when-cross-origin"
                     />
                   </div>
                 ))}

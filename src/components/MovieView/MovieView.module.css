@@ -150,21 +150,6 @@
   font-size: 18px;
 }
 
-.detailsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
-  margin-bottom: 60px;
-}
-
-.detailCard {
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 24px;
-}
-
 .detailLabel {
   font-size: 0.9rem;
   color: #90a4ae;
@@ -180,42 +165,244 @@
   font-weight: 500;
 }
 
-.movieBudget {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 12px;
-  border-radius: 12px;
+.emptyValue {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 14px;
+  color: rgba(235, 238, 245, 0.65);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
   font-size: 0.9rem;
-  color: #e1f5fe;
-  white-space: nowrap;
 }
 
-.studiosList {
+.actions {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
 }
 
-.studio {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 12px;
-  border-radius: 12px;
+.officialWebsite {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 10px 18px;
+  color: rgba(235, 238, 245, 0.82);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.officialWebsite svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.officialWebsite:hover {
+  color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+  border-color: rgba(255, 173, 73, 0.42);
+}
+
+.officialWebsite:focus-visible {
+  outline: 2px solid rgba(255, 173, 73, 0.7);
+  outline-offset: 3px;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.7fr) minmax(320px, 1.3fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 30px;
+}
+
+.detailCard {
+  min-width: 0;
+  padding: 22px 24px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.budgetCard {
+  grid-column: 1;
+}
+
+.countriesCard {
+  grid-column: 2;
+}
+
+.studiosCard {
+  grid-column: 1 / -1;
+}
+
+.detailLabel {
+  margin-bottom: 14px;
+  color: #90a4ae;
   font-size: 0.9rem;
-  color: #e1f5fe;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.detailValue {
+  min-width: 0;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.movieBudget {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 14px;
+  color: rgba(235, 238, 245, 0.9);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1;
   white-space: nowrap;
 }
 
 .countriesList {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
-.countryFlag {
+.country {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 14px;
+  color: rgba(235, 238, 245, 0.9);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.studiosList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.studio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.studioLogoWrapper {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px 12px;
-  border-radius: 20px;
+  justify-content: center;
+  width: 100%;
+  height: 72px;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.emptyStudioLogo {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.studioLogo {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 48px;
+  object-fit: contain;
+}
+
+.studioName {
+  width: 100%;
+  min-height: 36px;
+  color: rgba(235, 238, 245, 0.74);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.emptyValue {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 14px;
+  color: rgba(235, 238, 245, 0.65);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
   font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .budgetCard,
+  .countriesCard,
+  .studiosCard {
+    grid-column: auto;
+  }
+
+  .studiosList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .detailCard {
+    padding: 18px;
+  }
+
+  .studiosList {
+    grid-template-columns: 1fr;
+  }
+
+  .studio {
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .studioLogoWrapper {
+    max-width: 220px;
+  }
+
+  .studioName {
+    max-width: 220px;
+    text-align: left;
+  }
 }

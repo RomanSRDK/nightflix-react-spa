@@ -3,7 +3,6 @@
   justify-content: center;
 }
 
-/* Контейнер-пилюля в тёмном стиле */
 .navList {
   position: relative;
   display: flex;
@@ -17,7 +16,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Скользящий фон под активной кнопкой */
 .navList::after {
   content: "";
   position: absolute;
@@ -36,12 +34,10 @@
   transform: translateX(0);
 }
 
-/* Когда активна "week" — двигаем ползунок вправо */
 .navList[data-active="week"]::after {
   transform: translateX(calc(100% + 4px));
 }
 
-/* Скрываем радиокнопки */
 .input {
   position: absolute;
   opacity: 0;
@@ -50,7 +46,6 @@
   pointer-events: none;
 }
 
-/* Кнопки-лейблы в тёмном стиле */
 .label {
   position: relative;
   display: block;
@@ -68,18 +63,15 @@
   text-align: center;
 }
 
-/* Hover состояние */
 .label:hover {
   color: #ebeef5;
 }
 
-/* Активный текст */
 .input:checked + .label {
   color: #ebeef5;
   font-weight: 600;
 }
 
-/* Клавиатурный фокус */
 .label:focus-visible {
   outline: 2px solid rgba(255, 173, 73, 0.5);
   outline-offset: 2px;

@@ -7,7 +7,7 @@ const initialAssistantMessage = {
   id: "initial-assistant-message",
   role: "assistant",
   content:
-    "Hi! Let's find something to watch tonight. What are you in the mood for?",
+    "Hi! Tell me your mood or favorite actor, and I'll find the perfect movie for you 🍿",
 };
 
 function MovieAssistantPage() {
@@ -76,7 +76,7 @@ function MovieAssistantPage() {
     } catch (error) {
       console.error(error);
 
-      setError("Не удалось получить рекомендацию. Попробуйте ещё раз.");
+      setError("Unable to get a recommendation. Please try again.");
     } finally {
       setIsLoading(false);
     }

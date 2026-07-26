@@ -8,7 +8,6 @@ export const getTrendingMovies = createAsyncThunk(
       const { data } = await tmdbApi.get(
         `/trending/movie/${timeWindow}?page=${page}`,
       );
-      console.log(data);
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
@@ -21,7 +20,6 @@ export const getMovieById = createAsyncThunk(
   async (movieId, ThunkAPI) => {
     try {
       const { data } = await tmdbApi.get(`/movie/${movieId}`);
-      console.log(data);
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
@@ -48,7 +46,6 @@ export const getMoviesByName = createAsyncThunk(
       const { data } = await tmdbApi.get(
         `/search/movie?query=${debouncedQuery}&page=${page}`,
       );
-      console.log(data);
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
@@ -63,7 +60,6 @@ export const getActorsCast = createAsyncThunk(
       const { data } = await tmdbApi.get(
         `/movie/${movieId}/credits?language=en-US`,
       );
-      console.log(data.cast);
       return data.cast;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
@@ -78,7 +74,6 @@ export const getReviews = createAsyncThunk(
       const { data } = await tmdbApi.get(
         `/movie/${movieId}/reviews?language=en-US`,
       );
-      console.log(data.results);
       return data.results;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);

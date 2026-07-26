@@ -23,5 +23,5 @@ export default MessageItem;
 // message = {
 //   id: "some-id",
 //   role: "user",
-//   content: "Хочу посмотреть комедию",
+//   content: "Wanna see movie",
 // };

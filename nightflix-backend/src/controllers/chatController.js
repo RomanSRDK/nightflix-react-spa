@@ -27,26 +27,25 @@ export const createChatInteraction = async (req, res) => {
     switch (status) {
       case 429:
         return res.status(429).json({
-          message:
-            "Слишком много запросов. Пожалуйста, подождите немного и попробуйте снова.",
+          message: "Too many requests. Please wait a moment and try again",
         });
       case 503:
         return res.status(503).json({
           message:
-            "Сервис рекомендаций временно перегружен. Попробуйте немного позже.",
+            "The recommendation service is temporarily overloaded. Please try again later",
         });
       case 403:
         return res.status(500).json({
           message:
-            "Сервис рекомендаций временно недоступен из-за ошибки конфигурации.",
+            "The recommendation service is temporarily unavailable due to a configuration error",
         });
       case 404:
         return res.status(500).json({
-          message: "Сервис рекомендаций настроен некорректно.",
+          message: "The recommendation service is not configured correctly",
         });
       default:
         return res.status(500).json({
-          message: "Не удалось получить рекомендацию. Попробуйте ещё раз.",
+          message: "Failed to get a recommendation. Please try again",
         });
     }
   }

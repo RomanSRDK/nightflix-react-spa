@@ -32,26 +32,6 @@
   text-transform: uppercase;
 }
 
-/* .infoBtnContainer {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 6px 8px;
-  color: #ebeef5;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  font-weight: 600;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-
-  opacity: 0;
-  transform: translateX(8px);
-  transition: all 0.3s ease;
-} */
-
 .infoBtnContainer {
   position: absolute;
   top: 8px;
@@ -60,16 +40,13 @@
   align-items: center;
   gap: 4px;
   padding: 6px 8px;
-
-  color: #fff; /* белый текст */
+  color: #fff;
   font-weight: 600;
   border-radius: 8px;
-
-  background-color: rgba(0, 0, 0, 0.45); /* полупрозрачный фон для контраста */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); /* мягкая тень */
+  background-color: rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-
   opacity: 0;
   transform: translateX(8px);
   transition: all 0.3s ease;
@@ -81,9 +58,9 @@
 }
 
 .posterTitle {
-  white-space: nowrap; /*запрещает перенос текста на новую строку */
-  overflow: hidden; /*скрывает контент, который не помещается*/
-  text-overflow: ellipsis; /*добавляет троеточие (...) в конце*/
+  white-space: nowrap; /* Prevents text from wrapping onto a new line */
+  overflow: hidden; /* Hides any content that overflows the container */
+  text-overflow: ellipsis; /* Adds an ellipsis (...) to indicate truncated text */
   color: #ebeef5;
   margin-bottom: 4px;
   padding: 0 8px;
@@ -114,13 +91,14 @@
   color: #ffb74d;
   padding: 6px 8px;
   font-weight: 600;
-
   background-color: rgba(0, 0, 0, 0.65);
   border-radius: 8px;
   backdrop-filter: blur(4px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .icon {
-  font-size: 18px;
+  font-size: 16px;
 }

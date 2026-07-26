@@ -2,25 +2,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 42px;
+  gap: 6px;
   padding: 10px 20px;
   color: #ebeef5;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   backdrop-filter: blur(10px);
-  font-family: inherit;
+  font-weight: 500;
   font-size: 15px;
-  line-height: 1;
-  cursor: pointer;
-
   transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    transform 0.3s ease,
-    color 0.3s ease;
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .favoriteButton svg {
@@ -30,8 +24,8 @@
 }
 
 .favoriteButton:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 173, 73, 0.35);
 }
 
 .favoriteButton:focus-visible {
@@ -41,16 +35,101 @@
 
 .active {
   color: #ffad49;
-  border-color: #ffad49;
+  border-color: rgba(255, 173, 73, 0.65);
   background-color: rgba(255, 173, 73, 0.08);
-  box-shadow:
-    0 0 0 1px rgba(255, 173, 73, 0.08),
-    0 0 18px rgba(255, 173, 73, 0.16);
+  box-shadow: 0 0 16px rgba(255, 173, 73, 0.12);
 }
 
 .active:hover {
-  background-color: rgba(255, 173, 73, 0.16);
-  box-shadow:
-    0 0 0 1px rgba(255, 173, 73, 0.12),
-    0 0 24px rgba(255, 173, 73, 0.22);
+  background-color: rgba(255, 173, 73, 0.14);
+  border-color: #ffad49;
+  box-shadow: 0 0 18px rgba(255, 173, 73, 0.16);
+}
+
+.burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  pointer-events: none;
+}
+
+.burst > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background-color: #ffad49;
+  border-radius: 50%;
+  opacity: 0;
+
+  animation: burstParticle 550ms ease-out forwards;
+}
+
+.burst > span:nth-child(1) {
+  --burst-x: 0px;
+  --burst-y: -24px;
+}
+
+.burst > span:nth-child(2) {
+  --burst-x: 18px;
+  --burst-y: -18px;
+}
+
+.burst > span:nth-child(3) {
+  --burst-x: 24px;
+  --burst-y: 0px;
+}
+
+.burst > span:nth-child(4) {
+  --burst-x: 18px;
+  --burst-y: 18px;
+}
+
+.burst > span:nth-child(5) {
+  --burst-x: 0px;
+  --burst-y: 24px;
+}
+
+.burst > span:nth-child(6) {
+  --burst-x: -18px;
+  --burst-y: 18px;
+}
+
+.burst > span:nth-child(7) {
+  --burst-x: -24px;
+  --burst-y: 0px;
+}
+
+.burst > span:nth-child(8) {
+  --burst-x: -18px;
+  --burst-y: -18px;
+}
+
+@keyframes burstParticle {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(
+        calc(-50% + var(--burst-x)),
+        calc(-50% + var(--burst-y))
+      )
+      scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .burst {
+    display: none;
+  }
 }

@@ -27,6 +27,7 @@ export default function MovieDetailsPage() {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
+              paddingTop: "20px",
             }}
           >
             <NavigateBackButton />

@@ -3,7 +3,6 @@ import styles from "./RadioToggle.module.css";
 function RadioToggle({ timeWindow, onChange }) {
   return (
     <nav className={styles.nav}>
-      {/* data-active управляет положением ::after в CSS */}
       <div className={styles.navList} data-active={timeWindow}>
         <input
           type="radio"
