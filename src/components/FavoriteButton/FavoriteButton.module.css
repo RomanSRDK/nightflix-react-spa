@@ -3,34 +3,35 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 20px;
+  padding: 6px 20px;
   color: #ebeef5;
   background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(10px);
+  border-radius: 30px;
+  font-size: 16px;
   font-weight: 500;
-  font-size: 15px;
   transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease;
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.favoriteButton:hover {
+  color: #ffad49;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 173, 73, 0.4);
+}
+
+.favoriteButton:focus-visible {
+  outline: 2px solid rgba(255, 173, 73, 0.7);
+  outline-offset: 3px;
 }
 
 .favoriteButton svg {
   width: 21px;
   height: 21px;
   flex-shrink: 0;
-}
-
-.favoriteButton:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 173, 73, 0.35);
-}
-
-.favoriteButton:focus-visible {
-  outline: 2px solid rgba(255, 173, 73, 0.7);
-  outline-offset: 3px;
 }
 
 .active {

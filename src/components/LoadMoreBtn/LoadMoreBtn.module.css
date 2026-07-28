@@ -1,19 +1,29 @@
 .loadMoreBtn {
-  margin: 0 auto 40px auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid #ffad49;
-  backdrop-filter: blur(10px);
-  color: #ebeef5;
+  gap: 6px;
+  margin: 0 auto 40px;
   padding: 12px 30px;
+  color: #ebeef5;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 173, 73, 0.4);
   border-radius: 30px;
+  backdrop-filter: blur(10px);
   font-size: 16px;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .loadMoreBtn:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+  color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+}
+
+.loadMoreBtn:focus-visible {
+  outline: 2px solid rgba(255, 173, 73, 0.7);
+  outline-offset: 3px;
 }

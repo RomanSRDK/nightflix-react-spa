@@ -24,9 +24,10 @@
 .pagination :global(.MuiPaginationItem-ellipsis) {
   color: #9ea7b8;
 }
+ */
 
 .pagination :global(.MuiPaginationItem-root.Mui-selected.Mui-disabled) {
   opacity: 1;
   cursor: default;
   pointer-events: none;
-} */
+}

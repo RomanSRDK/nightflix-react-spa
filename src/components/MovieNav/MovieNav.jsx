@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
-import css from "./MovieNav.module.css";
 import clsx from "clsx";
+import styles from "./MovieNav.module.css";
 
 function MovieNav() {
   const getActiveLinkClass = ({ isActive }) => {
-    return clsx(isActive ? css.isActive : css.link);
+    return clsx(isActive ? styles.isActive : styles.link);
   };
 
   return (
-    <div className={css.navContainer}>
-      <ul className={css.siteNav}>
+    <div className={styles.navContainer}>
+      <ul className={styles.siteNav}>
         <li>
           <NavLink to="cast" className={getActiveLinkClass}>
             Cast

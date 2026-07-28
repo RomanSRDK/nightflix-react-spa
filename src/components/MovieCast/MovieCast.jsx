@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { castInfo } from "../../redux/movies/selectors";
-import { getActorsCast } from "../../redux/movies/operations";
+import { useParams } from "react-router-dom";
 import { IMG_URL_W500 } from "../../constants/tmdbConstants";
+import { getActorsCast } from "../../redux/movies/operations";
+import { castInfo } from "../../redux/movies/selectors";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import { FaUserGroup } from "react-icons/fa6";
 import styles from "./MovieCast.module.css";
 
 function MovieCast() {
@@ -20,7 +21,7 @@ function MovieCast() {
   const visibleActors = actors.slice(0, actorsPerPage);
 
   useEffect(() => {
-    dispatch(getActorsCast(movieId));
+    dispatch(getActorsCast(Number(movieId)));
   }, [dispatch, movieId]);
 
   const getInitial = (name) => {
@@ -36,7 +37,7 @@ function MovieCast() {
   return (
     <>
       <span className={`${styles.castMembers} ${styles.withIcon}`}>
-        {actors.length} Cast Members
+        <FaUserGroup /> {actors.length} Cast Members
       </span>
       <ul className={styles.list}>
         {visibleActors.map((actor) => (
@@ -53,8 +54,12 @@ function MovieCast() {
               </div>
             )}
 
-            <p className={styles.actorName}>{actor.name}</p>
-            <p className={styles.characterName}>{actor.character}</p>
+            <p className={styles.actorName}>
+              {actor.name || actor.original_name}
+            </p>
+            <p className={styles.characterName}>
+              {actor.character || "Role not specified"}
+            </p>
           </li>
         ))}
       </ul>

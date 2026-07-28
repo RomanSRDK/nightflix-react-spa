@@ -1,26 +1,44 @@
 import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useParams } from "react-router-dom";
+import { Navigate, Outlet, useParams } from "react-router-dom";
+
 import { getMovieById } from "../redux/movies/operations";
-import { movieInfo } from "../redux/movies/selectors";
-import MovieView from "../components/MovieView/MovieView";
-import MovieNav from "../components/MovieNav/MovieNav";
-import NavigateBackButton from "../components/NavigateBackButton/NavigateBackButton";
-import Loader from "../components/Loader/Loader";
+import { isLoading, movieInfo, moviesError } from "../redux/movies/selectors";
+
 import FavoriteButton from "../components/FavoriteButton/FavoriteButton";
+import Loader from "../components/Loader/Loader";
+import MovieNav from "../components/MovieNav/MovieNav";
+import MovieView from "../components/MovieView/MovieView";
+import NavigateBackButton from "../components/NavigateBackButton/NavigateBackButton";
 
 export default function MovieDetailsPage() {
   const dispatch = useDispatch();
   const { movieId } = useParams();
+  const numericMovieId = Number(movieId);
+  const isValidMovieId = Number.isInteger(numericMovieId) && numericMovieId > 0;
+
   const info = useSelector(movieInfo);
+  const loading = useSelector(isLoading);
+  const error = useSelector(moviesError);
 
   useEffect(() => {
-    dispatch(getMovieById(movieId));
-  }, [dispatch, movieId]);
+    if (!isValidMovieId) {
+      return;
+    }
+
+    dispatch(getMovieById(numericMovieId));
+  }, [dispatch, isValidMovieId, numericMovieId]);
+
+  if (!isValidMovieId || error) {
+    return <Navigate to="/not-found" replace />;
+  }
 
   return (
     <div className="container">
-      {info ? (
+      {loading && <Loader />}
+
+      {info && (
         <div>
           <div
             style={{
@@ -37,8 +55,6 @@ export default function MovieDetailsPage() {
           <MovieNav />
           <Outlet />
         </div>
-      ) : (
-        <Loader />
       )}
     </div>
   );

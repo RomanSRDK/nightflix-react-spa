@@ -1,9 +1,9 @@
 import { DotLoader } from "react-spinners";
-import css from "./Loader.module.css";
+import styles from "./Loader.module.css";
 
 export const Loader = () => {
   return (
-    <div className={css.loaderBackdrop}>
+    <div className={styles.loaderBackdrop}>
       <DotLoader color={"#ffb74d"} />
     </div>
   );

@@ -184,42 +184,39 @@
 }
 
 .officialWebsite {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
-  min-height: 42px;
-  padding: 10px 18px;
-  color: rgba(235, 238, 245, 0.82);
+  gap: 6px;
+  padding: 12px 30px;
+  color: #ebeef5;
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
+  border-color: rgba(255, 173, 73, 0.4);
   backdrop-filter: blur(10px);
-  font-size: 15px;
+  border-radius: 30px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1;
-  text-decoration: none;
   transition:
-    color 0.25s ease,
-    background-color 0.25s ease,
-    border-color 0.25s ease;
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.officialWebsite:hover {
+  color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+}
+
+.officialWebsite:focus-visible {
+  outline: 2px solid rgba(255, 173, 73, 0.7);
+  outline-offset: 3px;
 }
 
 .officialWebsite svg {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-}
-
-.officialWebsite:hover {
-  color: #ffad49;
-  background-color: rgba(255, 173, 73, 0.08);
-  border-color: rgba(255, 173, 73, 0.42);
-}
-
-.officialWebsite:focus-visible {
-  outline: 2px solid rgba(255, 173, 73, 0.7);
-  outline-offset: 3px;
 }
 
 .detailsGrid {

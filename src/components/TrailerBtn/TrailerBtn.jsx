@@ -1,16 +1,14 @@
+import { useEffect, useState } from "react";
+import { CiPlay1 } from "react-icons/ci";
+import { IoClose } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-import { CiPlay1 } from "react-icons/ci";
-
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { isLoading, trailerMovie } from "../../redux/movies/selectors";
 import { getTrailerMovie } from "../../redux/movies/operations";
-
-import styles from "./TrailerBtn.module.css";
+import { isLoading, trailerMovie } from "../../redux/movies/selectors";
 import Loader from "../Loader/Loader";
+import styles from "./TrailerBtn.module.css";
 
 function TrailerBtn({ movieId }) {
   const dispatch = useDispatch();
@@ -93,10 +91,16 @@ function TrailerBtn({ movieId }) {
   };
 
   return (
-    <div>
-      <button onClick={handleClick} className={styles.watchTrailerBtn}>
-        <CiPlay1 />
-        Watch trailer
+    <>
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={loader}
+        aria-busy={loader}
+        className={styles.watchTrailerBtn}
+      >
+        <CiPlay1 aria-hidden="true" />
+        Watch Trailer
       </button>
 
       {loader && <Loader />}
@@ -104,8 +108,12 @@ function TrailerBtn({ movieId }) {
       {isOpen && (
         <div className={styles.backdrop} onClick={handleBackdropClick}>
           <div className={styles.playerWindow}>
-            <button onClick={handleClose} className={styles.closeButton}>
-              ✕
+            <button
+              type="button"
+              onClick={handleClose}
+              className={styles.closeButton}
+            >
+              <IoClose aria-hidden="true" />
             </button>
 
             {trailer.length > 0 ? (
@@ -114,11 +122,11 @@ function TrailerBtn({ movieId }) {
                   <div key={t.key}>
                     <iframe
                       src={`https://www.youtube-nocookie.com/embed/${t.key}`}
-                      title={t.name}
+                      title={t.name || "Movie trailer"}
                       width="100%"
                       height="450"
                       allowFullScreen
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allow="clipboard-write; encrypted-media; web-share"
                       frameBorder="0"
                       loading="lazy"
                       referrerPolicy="strict-origin-when-cross-origin"
@@ -134,7 +142,7 @@ function TrailerBtn({ movieId }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 

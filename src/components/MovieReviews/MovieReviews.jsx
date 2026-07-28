@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import styles from "./MovieReviews.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { reviewsInfo } from "../../redux/movies/selectors";
+import { useParams } from "react-router-dom";
 import { getReviews } from "../../redux/movies/operations";
+import { reviewsInfo } from "../../redux/movies/selectors";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import { MdRateReview } from "react-icons/md";
+import styles from "./MovieReviews.module.css";
 
 function MovieReviews() {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function MovieReviews() {
   return (
     <>
       <span className={`${styles.numberOfReviews} ${styles.withIcon}`}>
-        {reviews.length} Reviews
+        <MdRateReview /> {reviews.length} Reviews
       </span>
       <ul className={styles.list}>
         {visibleReviews.map((review) => (

@@ -5,49 +5,47 @@
 }
 
 .siteNav {
-  position: relative;
-  z-index: 2;
   display: flex;
-  gap: 4px;
-  /* background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 6px;
-  width: fit-content; */
+  gap: 12px;
 }
 
 .link {
-  position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
   padding: 12px 24px;
-  font-size: 16px;
-  color: #b0bec5;
-  font-weight: 500;
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  color: #ebeef5;
   text-decoration: none;
-  min-width: 100px;
-  text-align: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .link:hover,
 .link:focus {
-  color: #ebeef5;
-  background: rgba(255, 255, 255, 0.08);
+  color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+  border-color: rgba(255, 173, 73, 0.4);
 }
 
 .isActive {
-  position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
   padding: 12px 24px;
+  color: #ffad49;
+  text-decoration: none;
+  background-color: rgba(255, 173, 73, 0.08);
+  border: 1px solid rgba(255, 173, 73, 0.45);
+  border-radius: 30px;
   font-size: 16px;
-  color: #ebeef5;
-  font-weight: 600;
-  background: rgba(255, 173, 73, 0.15);
-  border: 1px solid rgba(255, 173, 73, 0.3);
-  border-radius: 8px;
-  min-width: 100px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(255, 173, 73, 0.2);
+  font-weight: 500;
 }

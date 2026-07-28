@@ -8,15 +8,10 @@
   border-radius: 16px;
   padding: 10px 16px;
   margin-bottom: 20px;
-  font-size: 0.9rem;
+  font-size: 16px;
   font-weight: 500;
   color: #ebeef5;
   width: fit-content;
-}
-
-.castMembers.withIcon::before {
-  content: "🎭";
-  font-size: 1.1em;
 }
 
 .list {
@@ -32,7 +27,9 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 12px 24px rgba(0, 0, 0, 0.12);
   overflow: hidden;
 }
 

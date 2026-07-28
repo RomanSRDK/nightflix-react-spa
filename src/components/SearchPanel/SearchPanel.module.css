@@ -1,58 +1,82 @@
 .searchContainer {
   position: relative;
-  display: block;
-  margin: 0 auto 25px;
   width: 100%;
   max-width: 500px;
+  margin: 0 auto 25px;
 }
 
 .searchInput {
   display: block;
-  margin: 0;
   width: 100%;
-  padding: 10px 120px 10px 20px;
-  font-size: 16px;
-  font-weight: 400;
+  padding: 12px 46px 12px 20px;
   color: #ebeef5;
-  background: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 30px;
   outline: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.searchButton {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #ffad49, #ff9800);
-  color: #ebeef5;
-  border-radius: 0 30px 30px 0;
-  font-size: 14px;
-  font-weight: 600;
+.searchInput::-webkit-search-cancel-button {
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .searchInput::placeholder {
-  color: #90a4ae;
-  font-weight: 400;
-  opacity: 0.8;
+  color: rgba(235, 238, 245, 0.5);
+  opacity: 1;
 }
 
 .searchInput:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 173, 73, 0.25);
 }
 
 .searchInput:focus {
+  background-color: rgba(255, 173, 73, 0.06);
   border-color: rgba(255, 173, 73, 0.5);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 0 0 3px rgba(255, 173, 73, 0.1),
-    0 6px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-1px);
+}
+
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  color: rgba(235, 238, 245, 0.55);
+  background-color: transparent;
+  border: 0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.clearButton svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+
+.clearButton:hover {
+  color: #ffad49;
+  background-color: rgba(255, 173, 73, 0.08);
+}
+
+.clearButton:focus-visible {
+  color: #ffad49;
+  outline: 1px solid rgba(255, 173, 73, 0.5);
+  outline-offset: 1px;
 }

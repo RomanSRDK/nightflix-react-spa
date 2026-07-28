@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { toggleFavorite } from "../../redux/movies/slice";
 import { favoriteMovieIds } from "../../redux/movies/selectors";
 import styles from "./FavoriteButton.module.css";

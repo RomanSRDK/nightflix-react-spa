@@ -1,5 +1,6 @@
 export const trendingMovies = (state) => state.movies.items;
 export const isLoading = (state) => state.movies.isLoading;
+export const moviesError = (state) => state.movies.error;
 export const movieInfo = (state) => state.movies.movieInfo;
 export const totalPages = (state) => state.movies.totalPages;
 export const trailerMovie = (state) => state.movies.trailers;

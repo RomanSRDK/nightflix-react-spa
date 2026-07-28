@@ -35,7 +35,7 @@ export const moviesSlice = createSlice({
     isSearched: false,
     isLoading: false,
     error: null,
-    // totalPages: 0,
+    totalPages: 0,
   },
   reducers: {
     clearFavoriteMovies: (state) => {
@@ -79,10 +79,20 @@ export const moviesSlice = createSlice({
       .addCase(getMovieById.pending, (state) => {
         state.isLoading = true;
         state.movieInfo = null;
+        state.error = null;
       })
       .addCase(getMovieById.fulfilled, (state, action) => {
         state.isLoading = false;
         state.movieInfo = action.payload;
+        state.error = null;
+      })
+      .addCase(getMovieById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.movieInfo = null;
+        state.error = action.payload ?? {
+          status: 500,
+          message: "Failed to load movie details",
+        };
       })
       .addCase(getTrailerMovie.pending, (state) => {
         state.isLoading = true;

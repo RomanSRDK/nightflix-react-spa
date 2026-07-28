@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
-import TrailerBtn from "../TrailerBtn/TrailerBtn";
+import { Helmet } from "react-helmet-async";
 import { CiStar } from "react-icons/ci";
-import { LuClock4 } from "react-icons/lu";
-import { LuExternalLink } from "react-icons/lu";
+import { LuClock4, LuExternalLink } from "react-icons/lu";
+import { useParams } from "react-router-dom";
 import { BASE_URL_IMG } from "../../constants/tmdbConstants";
+import TrailerBtn from "../TrailerBtn/TrailerBtn";
+import ArtworkMenu from "../ArtworkMenu/ArtworkMenu";
 import styles from "./MovieView.module.css";
 
 function MovieView({ movieInfo }) {
@@ -23,7 +24,19 @@ function MovieView({ movieInfo }) {
   };
 
   return (
-    <div>
+    <>
+      <Helmet>
+        <title>{`${movieInfo.title} | NightFlix`}</title>
+
+        <meta
+          name="description"
+          content={
+            movieInfo.overview ||
+            `Explore details, cast, reviews and trailers for ${movieInfo.title}.`
+          }
+        />
+      </Helmet>
+
       {/* Fixed background */}
       <div className={styles.backgroundContainer}>
         {movieInfo.backdrop_path && (
@@ -46,14 +59,16 @@ function MovieView({ movieInfo }) {
           />
         ) : (
           <div className={`${styles.imagePlaceholder} ${styles.initials}`}>
-            {movieInfo.title ? movieInfo.title : movieInfo.original_title}
+            {movieInfo.title || movieInfo.original_title}
           </div>
         )}
 
         <ul className={styles.infoList}>
           <li className={styles.year}>{formatDate(movieInfo.release_date)}</li>
           <li>
-            <h1 className={styles.title}>{movieInfo.title}</h1>
+            <h1 className={styles.title}>
+              {movieInfo.original_title || movieInfo.title}
+            </h1>
           </li>
           <li className={styles.tagLine}>
             {movieInfo.tagline.length > 0 ? (
@@ -97,7 +112,7 @@ function MovieView({ movieInfo }) {
                 </>
               ) : (
                 <>
-                  <LuClock4 /> {"N/A"}
+                  <LuClock4 /> {"Not specified"}
                 </>
               )}
             </li>
@@ -117,6 +132,7 @@ function MovieView({ movieInfo }) {
                 <span>Visit Official Movie Site</span>
               </a>
             )}
+            <ArtworkMenu movieInfo={movieInfo} />
           </li>
         </ul>
       </div>
@@ -131,7 +147,7 @@ function MovieView({ movieInfo }) {
                 {`$${movieInfo.budget.toLocaleString("en-US")}`}
               </span>
             ) : (
-              <span className={styles.emptyValue}>N/A</span>
+              <span className={styles.emptyValue}>Not disclosed</span>
             )}
           </div>
         </li>
@@ -149,7 +165,7 @@ function MovieView({ movieInfo }) {
                 ))}
               </ul>
             ) : (
-              <span className={styles.emptyValue}>N/A</span>
+              <span className={styles.emptyValue}>Not specified</span>
             )}
           </div>
         </li>
@@ -182,12 +198,12 @@ function MovieView({ movieInfo }) {
                 ))}
               </ul>
             ) : (
-              <span className={styles.emptyValue}>N/A</span>
+              <span className={styles.emptyValue}>Not specified</span>
             )}
           </div>
         </li>
       </ul>
-    </div>
+    </>
   );
 }
 

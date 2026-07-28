@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import MessageList from "../components/MessageList/MessageList";
 import MessageForm from "../components/MessageForm/MessageForm";
+import toast from "react-hot-toast";
 
 const initialAssistantMessage = {
   id: "initial-assistant-message",
@@ -137,18 +138,15 @@ function MovieAssistantPage() {
         onKeyDown={handleKeyDown}
       />
 
-      {error && (
-        <p
-          style={{
-            margin: "0 20px 16px",
-            color: "#ff8a80",
-            fontSize: "14px",
-            textAlign: "center",
-          }}
-        >
-          {error}
-        </p>
-      )}
+      {error &&
+        toast.error(error, {
+          icon: "❌",
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        })}
     </main>
   );
 }

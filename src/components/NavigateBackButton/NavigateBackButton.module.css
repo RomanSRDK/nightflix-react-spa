@@ -1,25 +1,26 @@
 .backButton {
-  font-weight: 500;
-  font-size: 15px;
   display: flex;
   align-items: center;
-  color: #ebeef5;
-  width: 100px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 10px 20px;
-  border-radius: 25px;
+  justify-content: center;
   gap: 6px;
+  padding: 6px 20px;
+  color: #ebeef5;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 500;
   transition:
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease;
+    color 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .backButton:hover {
+  color: #ffad49;
   background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 173, 73, 0.35);
+  border-color: rgba(255, 173, 73, 0.4);
 }
 
 .backButton:focus-visible {
