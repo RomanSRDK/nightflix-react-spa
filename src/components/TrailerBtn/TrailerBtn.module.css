@@ -63,6 +63,20 @@
   height: 32px;
 }
 
+.videoWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.videoWrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 .text {
   padding: 24px 20px;
   border: 1px solid rgb(255 255 255 / 0.1);
@@ -80,14 +94,23 @@
   background-color: #ffad49;
 }
 
+:global(.slick-prev),
+:global(.slick-next) {
+  display: none !important;
+}
+
 @media screen and (width <= 900px) {
   .backdrop {
     padding: 56px 20px 32px;
   }
 
+  /* .playerWindow {
+    width: 80%;
+    max-width: 800px;
+  } */
+
   .playerWindow {
-    width: 100%;
-    max-width: 760px;
+    width: min(90vw, 800px);
   }
 
   .closeButton {
@@ -103,8 +126,12 @@
     font-size: 15px;
   }
 
+  .playerWindow {
+    width: 100%;
+  }
+
   .backdrop {
-    padding-inline: 12px;
+    padding: 48px 12px 24px;
   }
 
   .text {

@@ -121,17 +121,17 @@ function TrailerBtn({ movieId }) {
               <Slider {...sliderSettings}>
                 {trailer.map((t) => (
                   <div key={t.key}>
-                    <iframe
-                      src={`https://www.youtube-nocookie.com/embed/${t.key}`}
-                      title={t.name || "Movie trailer"}
-                      width="100%"
-                      height="450"
-                      allowFullScreen
-                      allow="clipboard-write; encrypted-media; web-share"
-                      frameBorder="0"
-                      loading="lazy"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                    />
+                    <div className={styles.videoWrapper}>
+                      <iframe
+                        src={`https://www.youtube-nocookie.com/embed/${t.key}`}
+                        title={t.name || "Movie trailer"}
+                        allowFullScreen
+                        allow="clipboard-write; encrypted-media; web-share"
+                        frameBorder="0"
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                      />
+                    </div>
                   </div>
                 ))}
               </Slider>
