@@ -11,3 +11,23 @@
   font-size: 24px;
   font-weight: 600;
 }
+
+@media screen and (width <= 800px) {
+  .titleToggle {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (width <= 600px) {
+  .titleToggle {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 22px;
+    text-align: center;
+  }
+}

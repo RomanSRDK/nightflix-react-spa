@@ -123,3 +123,27 @@
     font-size: 13px;
   }
 }
+
+@media screen and (width <= 600px) {
+  .page {
+    min-height: calc(100vh - 120px);
+    padding: 24px 16px;
+  }
+
+  .content {
+    padding: 40px 20px;
+  }
+
+  .code {
+    letter-spacing: -2px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .redirectText {
+    font-size: 13px;
+  }
+}

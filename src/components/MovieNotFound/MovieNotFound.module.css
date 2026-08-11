@@ -37,3 +37,24 @@
   line-height: 1.5;
   text-align: center;
 }
+
+@media screen and (width <= 600px) {
+  .movieNotFound {
+    min-height: 300px;
+    margin: 24px 16px;
+    padding: 40px 20px;
+  }
+
+  .movieNotFoundIcon {
+    margin-bottom: 18px;
+    font-size: 3rem;
+  }
+
+  .movieNotFoundTitle {
+    font-size: 20px;
+  }
+
+  .movieNotFoundText {
+    font-size: 14px;
+  }
+}

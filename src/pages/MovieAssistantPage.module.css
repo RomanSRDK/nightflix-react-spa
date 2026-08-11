@@ -1,0 +1,23 @@
+.page {
+  width: 100%;
+  max-width: 932px; /* 900 + 16px + 16px */
+  margin: 32px auto;
+  box-sizing: border-box;
+  padding-inline: 16px;
+}
+
+.chat {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (width <= 600px) {
+  .page {
+    margin: 20px auto;
+    padding-inline: 12px;
+  }
+}

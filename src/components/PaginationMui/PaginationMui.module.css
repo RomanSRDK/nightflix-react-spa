@@ -31,3 +31,23 @@
   cursor: default;
   pointer-events: none;
 }
+
+@media screen and (width <= 600px) {
+  .container {
+    margin-top: 28px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+    padding-inline: 8px !important;
+  }
+
+  .pagination :global(.MuiPagination-ul) {
+    flex-wrap: nowrap;
+  }
+
+  .pagination :global(.MuiPaginationItem-root) {
+    height: 30px;
+    min-width: 30px;
+    margin: 0 1px;
+    font-size: 13px;
+  }
+}

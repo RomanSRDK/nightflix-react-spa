@@ -162,13 +162,13 @@
   color: #90a4ae;
   font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 1px;
   line-height: 1.2;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .detailValue {
-  color: white;
+  color: #fff;
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -233,7 +233,7 @@
   width: 100%;
   max-width: 1200px;
   margin-bottom: 30px;
-  grid-template-columns: minmax(220px, 0.7fr) minmax(320px, 1.3fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .detailCard {
@@ -255,13 +255,6 @@
 
 .studiosCard {
   grid-column: 1 / -1;
-}
-
-.detailValue {
-  min-width: 0;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
 }
 
 .movieBudget {
@@ -363,6 +356,60 @@
 }
 
 @media screen and (width <= 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  .poster,
+  .imagePlaceholder {
+    width: min(280px, 72vw);
+  }
+
+  .imagePlaceholder {
+    height: auto;
+    aspect-ratio: 2 / 3;
+  }
+
+  .infoList {
+    width: 100%;
+    font-size: 15px;
+  }
+
+  .year,
+  .tagLine {
+    text-align: center;
+  }
+
+  .title {
+    margin-bottom: 14px;
+    font-size: 30px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .genres {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .overview {
+    padding: 20px;
+  }
+
+  .stats {
+    justify-content: center;
+    gap: 12px 18px;
+    flex-wrap: wrap;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
   .detailsGrid {
     grid-template-columns: 1fr;
   }
@@ -370,34 +417,62 @@
   .budgetCard,
   .countriesCard,
   .studiosCard {
-    grid-column: auto;
-  }
-
-  .studiosList {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column: 1;
   }
 }
 
 @media screen and (width <= 480px) {
-  .detailCard {
-    padding: 18px;
+  .container {
+    gap: 22px;
+    margin-top: 18px;
+    margin-bottom: 32px;
   }
 
-  .studiosList {
-    grid-template-columns: 1fr;
+  .poster,
+  .imagePlaceholder {
+    width: min(240px, 76vw);
   }
 
-  .studio {
+  .title {
+    font-size: 26px;
+  }
+
+  .tagLine {
+    font-size: 16px;
+  }
+
+  .genre {
+    padding: 7px 12px;
+    font-size: 0.82rem;
+  }
+
+  .overview {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+  .stats {
+    flex-direction: column;
     align-items: flex-start;
-    padding: 0;
+    margin-bottom: 18px;
   }
 
-  .studioLogoWrapper {
-    max-width: 220px;
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .studioName {
-    max-width: 220px;
-    text-align: left;
+  .actions > * {
+    width: 100%;
+  }
+
+  .officialWebsite {
+    width: 100%;
+    padding: 11px 18px;
+    font-size: 15px;
+  }
+
+  .detailCard {
+    padding: 16px;
   }
 }

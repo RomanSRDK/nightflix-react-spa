@@ -1,31 +1,11 @@
 .list {
   display: grid;
+  gap: 20px 24px;
   margin-bottom: 40px;
 
   /* gap: 20px 24px; */
   padding: 0 100px;
-  gap: 20px 24px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-@media (width <= 1100px) {
-  .list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (width <= 800px) {
-  .list {
-    padding: 0 20px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (width <= 500px) {
-  .list {
-    padding: 0;
-    grid-template-columns: 1fr;
-  }
 }
 
 .item {
@@ -38,4 +18,33 @@
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.06),
     0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+@media screen and (width <= 1100px) {
+  .list {
+    padding: 0 48px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media screen and (width <= 800px) {
+  .list {
+    gap: 18px;
+    padding: 0 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (width <= 560px) {
+  .list {
+    gap: 14px 12px;
+    margin-bottom: 28px;
+    padding: 0 12px;
+  }
+}
+
+@media screen and (width <= 340px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
 }

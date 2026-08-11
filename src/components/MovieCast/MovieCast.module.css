@@ -16,8 +16,8 @@
 
 .list {
   display: grid;
-  margin-bottom: 60px;
   gap: 24px 20px;
+  margin-bottom: 60px;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
 }
 
@@ -78,4 +78,28 @@
   font-weight: 400;
   line-height: 1.2;
   font-style: italic;
+}
+
+@media screen and (width <= 600px) {
+  .castMembers.withIcon {
+    margin-bottom: 16px;
+    padding: 9px 14px;
+    font-size: 14px;
+  }
+
+  .list {
+    gap: 14px 12px;
+    margin-bottom: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .actorName {
+    margin: 10px 9px 5px;
+    font-size: 0.82rem;
+  }
+
+  .characterName {
+    margin: 0 9px 10px;
+    font-size: 0.74rem;
+  }
 }

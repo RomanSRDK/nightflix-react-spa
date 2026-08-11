@@ -35,7 +35,7 @@
 .infoBtnContainer {
   display: flex;
   position: absolute;
-  top: 8px;
+  top: 7px;
   right: 8px;
   align-items: center;
   gap: 4px;
@@ -101,4 +101,49 @@
 
 .icon {
   font-size: 16px;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .infoBtnContainer {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media screen and (width <= 960px) {
+  .rating {
+    display: none;
+  }
+
+  .infoBtnContainer {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (width <= 560px) {
+  .posterImg,
+  .imagePlaceholder {
+    margin-bottom: 12px;
+  }
+
+  .posterTitle {
+    padding: 0 7px;
+    font-size: 14px;
+  }
+
+  .posterYear {
+    margin-bottom: 12px;
+    padding: 0 7px;
+    font-size: 13px;
+  }
+
+  .infoBtnContainer {
+    padding: 5px 6px;
+    font-size: 12px;
+  }
+
+  .icon {
+    font-size: 14px;
+  }
 }

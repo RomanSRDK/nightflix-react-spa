@@ -133,3 +133,15 @@
     display: none;
   }
 }
+
+@media screen and (width <= 480px) {
+  .favoriteButton {
+    padding: 7px 14px;
+    font-size: 14px;
+  }
+
+  .favoriteButton svg {
+    width: 19px;
+    height: 19px;
+  }
+}

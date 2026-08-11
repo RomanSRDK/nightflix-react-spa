@@ -88,7 +88,6 @@
   line-height: 1.6;
   hyphens: auto;
   overflow-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .content::before {
@@ -109,4 +108,36 @@
   font-size: 1.2em;
   line-height: 1.6;
   content: "\275E";
+}
+
+@media screen and (width <= 600px) {
+  .numberOfReviews {
+    padding: 9px 14px;
+    font-size: 14px;
+  }
+
+  .list {
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .item {
+    padding: 18px 16px;
+  }
+
+  .avatarContainer {
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .reviewAvatar {
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+
+  .content {
+    padding: 0 14px;
+    font-size: 0.9rem;
+  }
 }

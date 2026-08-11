@@ -41,3 +41,15 @@
   overflow-wrap: anywhere;
   white-space: pre-wrap;
 }
+
+@media screen and (width <= 600px) {
+  .message {
+    max-width: 88%;
+    padding: 10px 12px;
+  }
+
+  .messageText {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}

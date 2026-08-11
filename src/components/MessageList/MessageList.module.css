@@ -39,3 +39,19 @@
   color: #b0bec5;
   font-size: 15px;
 }
+
+@media screen and (width <= 600px) {
+  .messages {
+    gap: 12px;
+    height: calc(100dvh - 220px);
+    min-height: 320px;
+    max-height: 520px;
+    padding: 16px 12px;
+  }
+}
+
+@media screen and (width <= 380px) {
+  .messages {
+    min-height: 280px;
+  }
+}

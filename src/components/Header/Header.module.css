@@ -79,15 +79,62 @@
 
 .isActive::before {
   position: absolute;
-  inset: 0 -10px;
   z-index: -1;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
   content: "";
+  inset: 0 -10px;
 }
 
 @keyframes fadeIn {
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (width <= 768px) {
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .nav {
+    padding: 0 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navList {
+    justify-content: center;
+    gap: 16px;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .link,
+  .isActive {
+    padding: 14px 8px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
+
+@media screen and (width <= 520px) {
+  .nav {
+    padding: 0 10px;
+  }
+
+  .navList {
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .link,
+  .isActive {
+    padding: 13px 9px;
+    font-size: 14px;
   }
 }

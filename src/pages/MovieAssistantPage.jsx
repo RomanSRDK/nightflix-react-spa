@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import MessageList from "../components/MessageList/MessageList";
 import MessageForm from "../components/MessageForm/MessageForm";
 import toast from "react-hot-toast";
+import styles from "./MovieAssistantPage.module.css";
 
 const initialAssistantMessage = {
   id: "initial-assistant-message",
@@ -116,34 +117,24 @@ function MovieAssistantPage() {
   };
 
   return (
-    <main
-      style={{
-        width: "100%",
-        maxWidth: "900px",
-        margin: "32px auto",
-        overflow: "hidden",
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
-        border: "1px solid rgba(255, 255, 255, 0.1)",
-        borderRadius: "16px",
-        backdropFilter: "blur(10px)",
-        boxShadow: "0 12px 32px rgba(0, 0, 0, 0.2)",
-      }}
-    >
-      <MessageList
-        messages={messages}
-        isLoading={isLoading}
-        messagesEndRef={messagesEndRef}
-      />
+    <main className={styles.page}>
+      <div className={styles.chat}>
+        <MessageList
+          messages={messages}
+          isLoading={isLoading}
+          messagesEndRef={messagesEndRef}
+        />
 
-      <MessageForm
-        action={handleSubmit}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        onResetConversation={handleResetConversation}
-        isLoading={isLoading}
-        textareaRef={textareaRef}
-        onKeyDown={handleKeyDown}
-      />
+        <MessageForm
+          action={handleSubmit}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          onResetConversation={handleResetConversation}
+          isLoading={isLoading}
+          textareaRef={textareaRef}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
     </main>
   );
 }

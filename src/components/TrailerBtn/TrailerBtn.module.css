@@ -79,3 +79,36 @@
   border-radius: 8px;
   background-color: #ffad49;
 }
+
+@media screen and (width <= 900px) {
+  .backdrop {
+    padding: 56px 20px 32px;
+  }
+
+  .playerWindow {
+    width: 100%;
+    max-width: 760px;
+  }
+
+  .closeButton {
+    top: -42px;
+    right: 0;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .watchTrailerBtn {
+    width: 100%;
+    padding: 11px 18px;
+    font-size: 15px;
+  }
+
+  .backdrop {
+    padding-inline: 12px;
+  }
+
+  .text {
+    padding: 20px 14px;
+    font-size: 15px;
+  }
+}

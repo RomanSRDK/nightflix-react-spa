@@ -6,6 +6,7 @@
 }
 
 body {
+  overflow-x: hidden;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -67,4 +68,16 @@ img {
   display: block;
   height: auto;
   max-width: 100%;
+}
+
+@media screen and (width <= 768px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+
+@media screen and (width <= 480px) {
+  .container {
+    padding-inline: 12px;
+  }
 }
