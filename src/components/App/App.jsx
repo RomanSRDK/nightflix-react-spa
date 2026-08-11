@@ -49,7 +49,15 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
     </Suspense>
   );
 }

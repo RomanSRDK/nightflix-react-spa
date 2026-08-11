@@ -9,6 +9,7 @@ import { isLoading, trendingMovies } from "../redux/movies/selectors";
 
 import PaginationMui from "../components/PaginationMui/PaginationMui";
 import TrendingPanel from "../components/TrendingPanel/TrendingPanel";
+import Footer from "../components/Footer/Footer";
 import { useSearchParams } from "react-router-dom";
 
 export default function HomePage() {
@@ -40,6 +41,7 @@ export default function HomePage() {
         <>
           <MovieList movies={movies} />
           <PaginationMui />
+          <Footer />
         </>
       )}
     </>

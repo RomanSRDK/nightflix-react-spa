@@ -1,7 +1,6 @@
 {
-  "name": "nightflix-server",
-  "version": "1.0.0",
-  "main": "src/server.js",
+  "name": "nightflix-backend",
+  "description": "",
   "type": "module",
   "scripts": {
     "lint": "eslint src/**/*.js",
@@ -12,7 +11,6 @@
   "keywords": [],
   "author": "Roman Serdiuk",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@google/genai": "^2.12.0",
     "cors": "^2.8.6",

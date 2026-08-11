@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { getTrailerMovie } from "../../redux/movies/operations";
 import { isLoading, trailerMovie } from "../../redux/movies/selectors";
 import Loader from "../Loader/Loader";
+import toast from "react-hot-toast";
 import styles from "./TrailerBtn.module.css";
 
 function TrailerBtn({ movieId }) {
@@ -22,7 +23,7 @@ function TrailerBtn({ movieId }) {
       setIsOpen(true);
       document.body.style.overflow = "hidden";
     } catch (error) {
-      console.error("Error loading trailer:", error);
+      toast.error(`Error loading trailer: ${error}`);
     }
   };
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { LuChevronDown, LuImage, LuExternalLink } from "react-icons/lu";
+import { LuChevronDown, LuImageDown, LuExternalLink } from "react-icons/lu";
 import { BASE_URL_IMG } from "../../constants/tmdbConstants";
 import styles from "./ArtworkMenu.module.css";
 
@@ -50,7 +50,7 @@ function ArtworkMenu({ movieInfo }) {
         aria-expanded={isOpen}
         aria-haspopup="menu"
       >
-        <LuImage aria-hidden="true" />
+        <LuImageDown aria-hidden="true" />
         <span>Artwork</span>
         <LuChevronDown
           className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}

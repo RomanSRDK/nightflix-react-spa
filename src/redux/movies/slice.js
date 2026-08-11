@@ -8,14 +8,15 @@ import {
   getTrendingMovies,
   getFavoriteMovies,
 } from "./operations";
+import toast from "react-hot-toast";
 
 const getFavoritesFromLocalStorage = () => {
   try {
     const favorites = localStorage.getItem("favorites");
 
     return favorites ? JSON.parse(favorites) : [];
-  } catch (error) {
-    console.error("Failed to read favorites from localStorage:", error);
+  } catch {
+    toast.error("Failed to read favorites");
     return [];
   }
 };

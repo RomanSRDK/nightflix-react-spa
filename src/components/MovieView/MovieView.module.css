@@ -89,6 +89,13 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
+.originalTitle {
+  font-size: 22px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+}
+
 .tagLine {
   font-size: 18px;
   font-style: italic;

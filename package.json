@@ -1,12 +1,17 @@
 {
   "name": "nightflix",
+  "description": "",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "author": "Roman Serdiuk",
+  "license": "ISC",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
+    "check": "npm run lint && npm run lint:css",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -39,6 +44,9 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1",
     "vite": "^6.3.5"
   }
 }

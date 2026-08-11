@@ -66,9 +66,17 @@ function MovieView({ movieInfo }) {
         <ul className={styles.infoList}>
           <li className={styles.year}>{formatDate(movieInfo.release_date)}</li>
           <li>
-            <h1 className={styles.title}>
-              {movieInfo.original_title || movieInfo.title}
-            </h1>
+            {movieInfo.original_title === movieInfo.title ? (
+              <h1 className={styles.title}>{movieInfo.title}</h1>
+            ) : (
+              <h1 className={styles.title}>
+                {movieInfo.title}
+                <span className={styles.originalTitle}>
+                  {" "}
+                  (Original title: {movieInfo.original_title})
+                </span>
+              </h1>
+            )}
           </li>
           <li className={styles.tagLine}>
             {movieInfo.tagline.length > 0 ? (

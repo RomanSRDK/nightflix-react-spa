@@ -74,9 +74,7 @@ function MovieAssistantPage() {
       ]);
 
       setPreviousInteractionId(data.interactionId);
-    } catch (error) {
-      console.error(error);
-
+    } catch {
       setError("Unable to get a recommendation. Please try again.");
     } finally {
       setIsLoading(false);
@@ -141,11 +139,6 @@ function MovieAssistantPage() {
       {error &&
         toast.error(error, {
           icon: "❌",
-          style: {
-            borderRadius: "10px",
-            background: "#333",
-            color: "#fff",
-          },
         })}
     </main>
   );
