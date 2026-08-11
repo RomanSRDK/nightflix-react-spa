@@ -6,13 +6,13 @@ export const getTrendingMovies = createAsyncThunk(
   async ({ timeWindow, page }, ThunkAPI) => {
     try {
       const { data } = await tmdbApi.get(
-        `/trending/movie/${timeWindow}?page=${page}`,
+        `/trending/movie/${timeWindow}?page=${page}`
       );
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const getMovieById = createAsyncThunk(
@@ -24,7 +24,7 @@ export const getMovieById = createAsyncThunk(
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const getTrailerMovie = createAsyncThunk(
@@ -36,7 +36,7 @@ export const getTrailerMovie = createAsyncThunk(
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const getMoviesByName = createAsyncThunk(
@@ -44,13 +44,13 @@ export const getMoviesByName = createAsyncThunk(
   async ({ debouncedQuery, page }, ThunkAPI) => {
     try {
       const { data } = await tmdbApi.get(
-        `/search/movie?query=${debouncedQuery}&page=${page}`,
+        `/search/movie?query=${debouncedQuery}&page=${page}`
       );
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const getActorsCast = createAsyncThunk(
@@ -58,13 +58,13 @@ export const getActorsCast = createAsyncThunk(
   async (movieId, ThunkAPI) => {
     try {
       const { data } = await tmdbApi.get(
-        `/movie/${movieId}/credits?language=en-US`,
+        `/movie/${movieId}/credits?language=en-US`
       );
       return data.cast;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const getReviews = createAsyncThunk(
@@ -72,13 +72,13 @@ export const getReviews = createAsyncThunk(
   async (movieId, ThunkAPI) => {
     try {
       const { data } = await tmdbApi.get(
-        `/movie/${movieId}/reviews?language=en-US`,
+        `/movie/${movieId}/reviews?language=en-US`
       );
       return data.results;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const getFavoriteMovies = createAsyncThunk(
@@ -86,7 +86,7 @@ export const getFavoriteMovies = createAsyncThunk(
   async (movieIds, ThunkAPI) => {
     try {
       const requests = movieIds.map((movieId) =>
-        tmdbApi.get(`/movie/${movieId}`),
+        tmdbApi.get(`/movie/${movieId}`)
       );
 
       const responses = await Promise.all(requests);
@@ -95,5 +95,5 @@ export const getFavoriteMovies = createAsyncThunk(
     } catch (error) {
       return ThunkAPI.rejectWithValue(error);
     }
-  },
+  }
 );

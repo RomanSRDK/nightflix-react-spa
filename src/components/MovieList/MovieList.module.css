@@ -1,39 +1,40 @@
 .list {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  row-gap: 20px;
-  column-gap: 24px;
+  margin-bottom: 40px;
+
   /* gap: 20px 24px; */
   padding: 0 100px;
-  margin-bottom: 40px;
+  gap: 20px 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-@media (max-width: 1100px) {
+@media (width <= 1100px) {
   .list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 800px) {
+@media (width <= 800px) {
   .list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
     padding: 0 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 500px) {
+@media (width <= 500px) {
   .list {
-    grid-template-columns: 1fr;
     padding: 0;
+    grid-template-columns: 1fr;
   }
 }
 
 .item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+
   /* padding: 8px 8px 0 8px; */
   background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  border-radius: 10px;
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.06),
     0 12px 24px rgba(0, 0, 0, 0.08);

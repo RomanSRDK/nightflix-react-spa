@@ -58,78 +58,78 @@ function ArtworkMenu({ movieInfo }) {
         />
       </button>
 
-      {isOpen && (
-        <div className={styles.menu} role="menu">
-          <p className={styles.groupTitle}>Movie</p>
+      <div
+        className={`${styles.menu} ${isOpen ? styles.menuOpen : ""}`}
+        role="menu"
+      >
+        <p className={styles.groupTitle}>Movie</p>
 
-          {movieInfo.poster_path && (
-            <a
-              className={styles.menuItem}
-              href={`${BASE_URL_IMG}${movieInfo.poster_path}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              role="menuitem"
-              onClick={() => setIsOpen(false)}
-            >
-              <span>Poster</span>
-              <LuExternalLink aria-hidden="true" />
-            </a>
-          )}
+        {movieInfo.poster_path && (
+          <a
+            className={styles.menuItem}
+            href={`${BASE_URL_IMG}${movieInfo.poster_path}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="menuitem"
+            onClick={() => setIsOpen(false)}
+          >
+            <span>Poster</span>
+            <LuExternalLink aria-hidden="true" />
+          </a>
+        )}
 
-          {movieInfo.backdrop_path && (
-            <a
-              className={styles.menuItem}
-              href={`${BASE_URL_IMG}${movieInfo.backdrop_path}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              role="menuitem"
-              onClick={() => setIsOpen(false)}
-            >
-              <span>Backdrop</span>
-              <LuExternalLink aria-hidden="true" />
-            </a>
-          )}
+        {movieInfo.backdrop_path && (
+          <a
+            className={styles.menuItem}
+            href={`${BASE_URL_IMG}${movieInfo.backdrop_path}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            role="menuitem"
+            onClick={() => setIsOpen(false)}
+          >
+            <span>Backdrop</span>
+            <LuExternalLink aria-hidden="true" />
+          </a>
+        )}
 
-          {collection &&
-            (collection.poster_path || collection.backdrop_path) && (
-              <>
-                <div className={styles.separator} />
+        {collection && (collection.poster_path || collection.backdrop_path) && (
+          <>
+            <div className={styles.separator} />
 
-                <p className={styles.groupTitle}>
-                  {collection.name || "Collection"}
-                </p>
+            <p className={styles.groupTitle}>
+              {collection.name || "Collection"}
+            </p>
 
-                {collection.poster_path && (
-                  <a
-                    className={styles.menuItem}
-                    href={`${BASE_URL_IMG}${collection.poster_path}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    role="menuitem"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span>Collection Poster</span>
-                    <LuExternalLink aria-hidden="true" />
-                  </a>
-                )}
-
-                {collection.backdrop_path && (
-                  <a
-                    className={styles.menuItem}
-                    href={`${BASE_URL_IMG}${collection.backdrop_path}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    role="menuitem"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <span>Collection Backdrop</span>
-                    <LuExternalLink aria-hidden="true" />
-                  </a>
-                )}
-              </>
+            {collection.poster_path && (
+              <a
+                className={styles.menuItem}
+                href={`${BASE_URL_IMG}${collection.poster_path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>Collection Poster</span>
+                <LuExternalLink aria-hidden="true" />
+              </a>
             )}
-        </div>
-      )}
+
+            {collection.backdrop_path && (
+              <a
+                className={styles.menuItem}
+                href={`${BASE_URL_IMG}${collection.backdrop_path}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                role="menuitem"
+                onClick={() => setIsOpen(false)}
+              >
+                <span>Collection Backdrop</span>
+                <LuExternalLink aria-hidden="true" />
+              </a>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

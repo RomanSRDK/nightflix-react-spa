@@ -2,16 +2,16 @@ import js from "@eslint/js";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
   { ignores: ["dist", "nightflix-backend/**"] },
   {
     files: ["src/**/*.{js,jsx}"],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: "latest",
       globals: globals.browser,
       parserOptions: {
-        ecmaVersion: "latest",
         ecmaFeatures: { jsx: true },
         sourceType: "module",
       },
@@ -23,6 +23,7 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
+
       "no-unused-vars": [
         "error",
         {
@@ -30,11 +31,24 @@ export default [
           argsIgnorePattern: "^_",
         },
       ],
+
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
       ],
-      "no-console": "warn",
+
+      "no-console": [
+        "warn",
+        {
+          allow: ["warn", "error"],
+        },
+      ],
+
+      eqeqeq: ["error", "always"],
+      curly: ["error", "all"],
+      "no-var": "error",
+      "prefer-const": "error",
     },
   },
+  eslintConfigPrettier,
 ];

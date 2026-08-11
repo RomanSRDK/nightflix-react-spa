@@ -22,6 +22,7 @@ function MessageForm({
     <div className={styles.controls}>
       <form action={action} className={styles.form}>
         <textarea
+          disabled={isLoading}
           ref={textareaRef}
           name="message"
           value={inputValue}

@@ -4,7 +4,7 @@ import helmet from "helmet";
 import { chatRouter } from "./routes/chatRoutes.js";
 
 const allowedOrigins = ["http://localhost:5173", process.env.CLIENT_URL].filter(
-  Boolean,
+  Boolean
 );
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(
     origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+  })
 );
 
 app.use(express.json());

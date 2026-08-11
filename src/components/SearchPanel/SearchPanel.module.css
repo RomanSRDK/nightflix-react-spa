@@ -9,24 +9,24 @@
   display: block;
   width: 100%;
   padding: 12px 46px 12px 20px;
-  color: #ebeef5;
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 30px;
-  outline: none;
-  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ebeef5;
   font-size: 16px;
   font-weight: 400;
   transition:
     color 0.3s ease,
     background-color 0.3s ease,
     border-color 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+  outline: none;
 }
 
 .searchInput::-webkit-search-cancel-button {
   appearance: none;
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 .searchInput::placeholder {
@@ -45,19 +45,19 @@
 }
 
 .clearButton {
+  display: flex;
   position: absolute;
   top: 50%;
   right: 12px;
-  display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
   padding: 0;
-  color: rgba(235, 238, 245, 0.55);
-  background-color: transparent;
   border: 0;
   border-radius: 50%;
+  background-color: transparent;
+  color: rgba(235, 238, 245, 0.55);
   transform: translateY(-50%);
   transition:
     color 0.3s ease,
@@ -71,8 +71,8 @@
 }
 
 .clearButton:hover {
-  color: #ffad49;
   background-color: rgba(255, 173, 73, 0.08);
+  color: #ffad49;
 }
 
 .clearButton:focus-visible {

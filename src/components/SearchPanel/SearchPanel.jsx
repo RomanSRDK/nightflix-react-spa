@@ -40,7 +40,7 @@ function SearchPanel() {
         name: debouncedQuery,
         page: "1",
       },
-      { replace: true },
+      { replace: true }
     );
   }, [debouncedQuery, queryFromUrl, setSearchParams]);
 
@@ -54,7 +54,7 @@ function SearchPanel() {
       getMoviesByName({
         debouncedQuery: queryFromUrl,
         page,
-      }),
+      })
     );
   }, [dispatch, queryFromUrl, page]);
 

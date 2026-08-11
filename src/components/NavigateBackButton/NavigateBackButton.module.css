@@ -1,25 +1,25 @@
 .backButton {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 6px;
   padding: 6px 20px;
-  color: #ebeef5;
-  background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
   border-radius: 30px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ebeef5;
   font-size: 16px;
   font-weight: 500;
   transition:
     color 0.3s ease,
     background-color 0.3s ease,
     border-color 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .backButton:hover {
-  color: #ffad49;
   background-color: rgba(255, 255, 255, 0.08);
+  color: #ffad49;
   border-color: rgba(255, 173, 73, 0.4);
 }
 

@@ -1,11 +1,11 @@
 .header {
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
   z-index: 100;
   margin-bottom: 32px;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav {
@@ -24,26 +24,26 @@
 }
 
 .link {
-  position: relative;
   display: block;
+  position: relative;
   padding: 16px 8px;
-  font-size: 18px;
+  overflow: hidden;
   color: #b0bec5;
+  font-size: 18px;
   font-weight: 500;
   transition: all 0.3s ease;
-  overflow: hidden;
 }
 
 .link::after {
-  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent, #ffad49, transparent);
-  transition: all 0.3s ease;
   transform: translateX(-50%);
+  transition: all 0.3s ease;
+  content: "";
 }
 
 .link:hover,
@@ -58,16 +58,15 @@
 }
 
 .isActive {
-  position: relative;
   display: block;
+  position: relative;
   padding: 16px 8px;
-  font-size: 18px;
   color: #ffad49;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .isActive::after {
-  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -75,18 +74,16 @@
   height: 2px;
   background: linear-gradient(90deg, #ffad49, #ff8a00, #ffad49);
   box-shadow: 0 0 8px rgba(255, 173, 73, 0.4);
+  content: "";
 }
 
 .isActive::before {
-  content: "";
   position: absolute;
-  top: 0;
-  left: -10px;
-  right: -10px;
-  bottom: 0;
+  inset: 0 -10px;
   z-index: -1;
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
+  content: "";
 }
 
 @keyframes fadeIn {

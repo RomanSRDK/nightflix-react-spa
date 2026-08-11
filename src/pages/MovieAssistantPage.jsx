@@ -31,6 +31,15 @@ function MovieAssistantPage() {
     }
   }, [isLoading]);
 
+  useEffect(() => {
+    if (!error) return;
+
+    toast.error(error, {
+      id: "chat-error",
+      icon: "❌",
+    });
+  }, [error]);
+
   const resetTextareaHeight = () => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -61,7 +70,7 @@ function MovieAssistantPage() {
         {
           message,
           previousInteractionId,
-        },
+        }
       );
 
       setMessages((currentMessages) => [
@@ -135,11 +144,6 @@ function MovieAssistantPage() {
         textareaRef={textareaRef}
         onKeyDown={handleKeyDown}
       />
-
-      {error &&
-        toast.error(error, {
-          icon: "❌",
-        })}
     </main>
   );
 }
