@@ -6,7 +6,7 @@ export const createChatInteraction = async (req, res) => {
     const { message, previousInteractionId } = req.body;
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.6-flash",
+      model: "gemini-3.5-flash-lite",
       input: message,
       ...(previousInteractionId && {
         previous_interaction_id: previousInteractionId,

@@ -8,7 +8,7 @@ export default function Footer() {
         Developed by Roman Serdiuk ·{" "}
         <Link
           className={styles.link}
-          to="https://github.com/RomanSRDK"
+          to="https://github.com/RomanSRDK/nightflix-react-spa"
           target="_blank"
           rel="noopener noreferrer"
         >

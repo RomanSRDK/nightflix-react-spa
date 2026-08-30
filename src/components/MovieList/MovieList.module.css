@@ -2,8 +2,6 @@
   display: grid;
   gap: 20px 24px;
   margin-bottom: 40px;
-
-  /* gap: 20px 24px; */
   padding: 0 100px;
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
